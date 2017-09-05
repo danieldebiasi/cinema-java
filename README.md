@@ -35,6 +35,8 @@
 
 * **Daniel Rodrigues De Biasi** 
 
+* **Gabriel Duenias Rosa**
+
 * **Roberth Riyu Tamayose** 
 
 * **Thiago Kaoru Alves Takehama** 
