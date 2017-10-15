@@ -8,7 +8,9 @@
 package model;
 
 /**
- *
+ * Esta classe herda as características da classe Pessoa, e possui atributos e métodos
+ * específicos de funcionários.
+ * 
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public class Funcionario extends Pessoa {
@@ -29,6 +31,7 @@ public class Funcionario extends Pessoa {
     }
     
     /**
+     * Obter identificação da carteira de trabalho do funcionário.
      * @return the carteiraDeTrabalho
      */
     public String getCarteiraDeTrabalho() {
@@ -36,6 +39,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Definir identificação da carteira de trabalho do funcionário.
      * @param carteiraDeTrabalho the carteiraDeTrabalho to set
      */
     public void setCarteiraDeTrabalho(String carteiraDeTrabalho) {
@@ -43,6 +47,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Obter hora de entrada do funcionário.
      * @return the horaEntrada
      */
     public int getHoraEntrada() {
@@ -50,6 +55,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Definir hora de entrada do funcionário.
      * @param horaEntrada the horaEntrada to set
      */
     public void setHoraEntrada(int horaEntrada) {
@@ -57,6 +63,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Obter minuto de entrada do funcionário.
      * @return the minutoEntrada
      */
     public int getMinutoEntrada() {
@@ -64,6 +71,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Definir minuto de entrada do funcionário.
      * @param minutoEntrada the minutoEntrada to set
      */
     public void setMinutoEntrada(int minutoEntrada) {
@@ -71,6 +79,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Obter hora de saída do funcionário.
      * @return the horaSaida
      */
     public int getHoraSaida() {
@@ -78,6 +87,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Definir hora de saída do funcionário.
      * @param horaSaida the horaSaida to set
      */
     public void setHoraSaida(int horaSaida) {
@@ -85,6 +95,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Obter minuto de saída do funcionário.
      * @return the minutoSaida
      */
     public int getMinutoSaida() {
@@ -92,6 +103,7 @@ public class Funcionario extends Pessoa {
     }
 
     /**
+     * Definir minuto de saída do funcionário.
      * @param minutoSaida the minutoSaida to set
      */
     public void setMinutoSaida(int minutoSaida) {

@@ -8,7 +8,8 @@
 package model;
 
 /**
- *
+ * Esta classe descreve atributos e métodos necessários para manipular filmes no sistema.
+ * 
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public class Filme {
@@ -32,6 +33,7 @@ public class Filme {
     }
     
     /**
+     * Obter título do filme.
      * @return the titulo
      */
     public String getTitulo() {
@@ -39,6 +41,7 @@ public class Filme {
     }
 
     /**
+     * Definir título do filme.
      * @param titulo the titulo to set
      */
     public void setTitulo(String titulo) {
@@ -46,6 +49,7 @@ public class Filme {
     }
 
     /**
+     * Obter gênero do filme.
      * @return the genero
      */
     public String getGenero() {
@@ -53,6 +57,7 @@ public class Filme {
     }
 
     /**
+     * Definir gênero do filme.
      * @param genero the genero to set
      */
     public void setGenero(String genero) {
@@ -60,6 +65,7 @@ public class Filme {
     }
 
     /**
+     * Obter sinopse do filme.
      * @return the sinopse
      */
     public String getSinopse() {
@@ -67,6 +73,7 @@ public class Filme {
     }
 
     /**
+     * Definir sinopse do filme.
      * @param sinopse the sinopse to set
      */
     public void setSinopse(String sinopse) {
@@ -74,6 +81,7 @@ public class Filme {
     }
 
     /**
+     * Obter diretor do filme.
      * @return the diretor
      */
     public String getDiretor() {
@@ -81,6 +89,7 @@ public class Filme {
     }
 
     /**
+     * Definir diretor do filme.
      * @param diretor the diretor to set
      */
     public void setDiretor(String diretor) {
@@ -88,6 +97,7 @@ public class Filme {
     }
 
     /**
+     * Obter ano de lançamento do filme.
      * @return the ano
      */
     public int getAno() {
@@ -95,6 +105,7 @@ public class Filme {
     }
 
     /**
+     * Definir ano de lançamento do filme.
      * @param ano the ano to set
      */
     public void setAno(int ano) {
@@ -102,6 +113,7 @@ public class Filme {
     }
 
     /**
+     * Obter classificação indicativa do filme.
      * @return the clasIndicativa
      */
     public int getClasIndicativa() {
@@ -109,6 +121,7 @@ public class Filme {
     }
 
     /**
+     * Definir classificação indicativa do filme.
      * @param clasIndicativa the clasIndicativa to set
      */
     public void setClasIndicativa(int clasIndicativa) {
@@ -116,6 +129,7 @@ public class Filme {
     }
 
     /**
+     * Obter duração do filme (em minutos).
      * @return the duracao
      */
     public int getDuracao() {
@@ -123,6 +137,7 @@ public class Filme {
     }
 
     /**
+     * Definir duração do filme (em minutos).
      * @param duracao the duracao to set
      */
     public void setDuracao(int duracao) {

@@ -8,7 +8,9 @@
 package model;
 
 /**
- *
+ * Esta classe herda as características da classe Pessoa, e possui atributos e métodos 
+ * específicos de gestores do cinema.
+ * 
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public class Gestor extends Pessoa {
@@ -21,6 +23,7 @@ public class Gestor extends Pessoa {
     }
     
     /**
+     * Obter número do contrato do gestor.
      * @return the numContrato
      */
     public int getNumContrato() {
@@ -28,6 +31,7 @@ public class Gestor extends Pessoa {
     }
 
     /**
+     * Definir número do contrato do gestor.
      * @param numContrato the numContrato to set
      */
     public void setNumContrato(int numContrato) {

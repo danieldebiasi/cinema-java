@@ -8,7 +8,8 @@
 package model;
 
 /**
- *
+ * Esta classe possui atributos e métodos necessários para a manipulação de salas no sistema.
+ * 
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public class Sala {
@@ -26,6 +27,7 @@ public class Sala {
     }
     
     /**
+     * Obter número da sala.
      * @return the numSala
      */
     public int getNumSala() {
@@ -33,6 +35,7 @@ public class Sala {
     }
 
     /**
+     * Definir número da sala.
      * @param numSala the numSala to set
      */
     public void setNumSala(int numSala) {
@@ -40,6 +43,7 @@ public class Sala {
     }
 
     /**
+     * Obter status de utilização da sala.
      * @return the status
      */
     public String getStatus() {
@@ -47,6 +51,7 @@ public class Sala {
     }
 
     /**
+     * Definir status de utilização da sala.
      * @param status the status to set
      */
     public void setStatus(String status) {
@@ -54,6 +59,7 @@ public class Sala {
     }
 
     /**
+     * Obter estado das poltronas da sala.
      * @return the poltronas
      */
     public int[] getPoltronas() {
@@ -61,6 +67,7 @@ public class Sala {
     }
 
     /**
+     * Definir estado das poltronas da sala.
      * @param poltronas the poltronas to set
      */
     public void setPoltronas(int[] poltronas) {

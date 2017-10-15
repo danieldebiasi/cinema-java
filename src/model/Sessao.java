@@ -8,7 +8,7 @@
 package model;
 
 /**
- *
+ * Esta classe possui atributos e métodos necessários para a manipulação de Sessões no sistema.
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public class Sessao {
@@ -19,6 +19,7 @@ public class Sessao {
     private int minuto;
     
     /**
+     * Obter filme em exibição.
      * @return the filme
      */
     public Filme getFilme() {
@@ -26,6 +27,7 @@ public class Sessao {
     }
 
     /**
+     * Definir filme em exibição.
      * @param filme the filme to set
      */
     public void setFilme(Filme filme) {
@@ -33,6 +35,7 @@ public class Sessao {
     }
 
     /**
+     * Obter sala da sessão.
      * @return the sala
      */
     public Sala getSala() {
@@ -40,6 +43,7 @@ public class Sessao {
     }
 
     /**
+     * Definir sala da sessão.
      * @param sala the sala to set
      */
     public void setSala(Sala sala) {
@@ -47,6 +51,7 @@ public class Sessao {
     }
 
     /**
+     * Obter hora da sessão.
      * @return the hora
      */
     public int getHora() {
@@ -54,6 +59,7 @@ public class Sessao {
     }
 
     /**
+     * Definir hora da sessão.
      * @param hora the hora to set
      */
     public void setHora(int hora) {
@@ -61,6 +67,7 @@ public class Sessao {
     }
 
     /**
+     * Obter minuto da sessão.
      * @return the minuto
      */
     public int getMinuto() {
@@ -68,6 +75,7 @@ public class Sessao {
     }
 
     /**
+     * Definir minuto da sessão.
      * @param minuto the minuto to set
      */
     public void setMinuto(int minuto) {
