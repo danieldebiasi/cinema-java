@@ -24,7 +24,8 @@ public class Cadastro {
      */
     public void cadastrar(Filme filme){
         try {
-            Arquivo.inserirFilme(filme);
+            ArquivoFilme arquivo = new ArquivoFilme();
+            arquivo.inserir(filme);
         } catch (FilmeDuplicadoException ex) {
             LOGGER.log(Level.SEVERE, ex.getMessage());
         }
@@ -41,7 +42,8 @@ public class Cadastro {
         }
         
         try{
-            Arquivo.inserirFuncionario(funcionario);
+            ArquivoFuncionario arquivo = new ArquivoFuncionario();
+            arquivo.inserir(funcionario);
         }
         catch (FuncionarioDuplicadoException ex){
             LOGGER.log(Level.SEVERE, ex.getMessage());
@@ -59,7 +61,8 @@ public class Cadastro {
         }
         
         try{
-            Arquivo.inserirGestor(gestor);
+            ArquivoGestor arquivo = new ArquivoGestor();
+            arquivo.inserir(gestor);
         }
         catch (GestorDuplicadoException ex){
             LOGGER.log(Level.SEVERE, ex.getMessage());
@@ -72,7 +75,8 @@ public class Cadastro {
      */
     public void cadastrar(Sala sala){
         try {
-            Arquivo.inserirSala(sala);
+            ArquivoSala arquivo = new ArquivoSala();
+            arquivo.inserir(sala);
         } catch (SalaDuplicadaException ex) {
             LOGGER.log(Level.SEVERE, ex.getMessage());
         }
@@ -84,7 +88,8 @@ public class Cadastro {
      */
     public void cadastrar(Sessao sessao){
         try {
-            Arquivo.inserirSessao(sessao);
+            ArquivoSessao arquivo = new ArquivoSessao();
+            arquivo.inserir(sessao);
         } catch (SessaoDuplicadaException ex) {
             LOGGER.log(Level.SEVERE, ex.getMessage());
         }

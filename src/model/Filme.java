@@ -14,6 +14,7 @@ package model;
  */
 public class Filme {
 
+    private int codFilme;
     private String titulo;
     private String genero;
     private String sinopse;
@@ -22,7 +23,8 @@ public class Filme {
     private int clasIndicativa; //em anos
     private int duracao; //em minutos
     
-    public Filme(String titulo, String genero, String sinopse, String diretor, int ano, int clasIndicativa, int duracao){
+    public Filme(int codFilme, String titulo, String genero, String sinopse, String diretor, int ano, int clasIndicativa, int duracao){
+        this.codFilme = codFilme;
         this.titulo = titulo;
         this.genero = genero;
         this.sinopse = sinopse;
@@ -30,6 +32,25 @@ public class Filme {
         this.ano = ano;
         this.clasIndicativa = clasIndicativa;
         this.duracao = duracao;
+    }
+    
+    public Filme(){
+    }
+    
+    /**
+     * Obter código do filme.
+     * @return codFilme
+     */
+    public int getCodFilme(){
+        return codFilme;
+    }
+    
+    /**
+     * Definir código do filme.
+     * @param codFilme 
+     */
+    public void setCodFilme(int codFilme){
+        this.codFilme = codFilme;
     }
     
     /**

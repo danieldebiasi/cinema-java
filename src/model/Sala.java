@@ -16,14 +16,13 @@ public class Sala {
 
     private int numSala;
     private String status;
-    private int[] poltronas = new int[50];
     
-    public Sala(int numSala){
+    public Sala(int numSala, String status){
         this.numSala = numSala;
-        this.status = "Livre";
-        for(int i=0; i < poltronas.length; i++){
-            poltronas[i] = 0;
-        }
+        this.status = status;
+    }
+    
+    public Sala(){
     }
     
     /**
@@ -56,22 +55,5 @@ public class Sala {
      */
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    /**
-     * Obter estado das poltronas da sala.
-     * @return the poltronas
-     */
-    public int[] getPoltronas() {
-        return poltronas;
-    }
-
-    /**
-     * Definir estado das poltronas da sala.
-     * @param poltronas the poltronas to set
-     */
-    public void setPoltronas(int[] poltronas) {
-        this.poltronas = poltronas;
     }    
-    
 }

@@ -13,10 +13,42 @@ package model;
  */
 public class Sessao {
 
+    private int codSessao;
     private Filme filme;
     private Sala sala;
     private int hora;
     private int minuto;
+    private int[] poltronas = new int[50];
+    
+    public Sessao(int codSessao, Filme filme, Sala sala, int hora, int minuto, int[] poltronas){
+        this.codSessao = codSessao;
+        this.filme = filme;
+        this.sala = sala;
+        this.hora = hora;
+        this.minuto = minuto;
+        for(int i=0; i < poltronas.length; i++){
+            poltronas[i] = 0;
+        }
+    }
+    
+    public Sessao(){
+    }
+    
+    /**
+     * Obter o código da sessão.
+     * @return 
+     */
+    public int getCodSessao(){
+        return codSessao;
+    }
+    
+    /**
+     * Definir o código de uma sessão.
+     * @param codSessao 
+     */
+    public void setCodSessao(int codSessao){
+        this.codSessao = codSessao;
+    }
     
     /**
      * Obter filme em exibição.
@@ -81,5 +113,21 @@ public class Sessao {
     public void setMinuto(int minuto) {
         this.minuto = minuto;
     }    
+    
+    /**
+     * Obter poltronas da sessão.
+     * @return 
+     */
+    public int[] getPoltronas(){
+        return poltronas;
+    }
+    
+    /**
+     * Definir poltronas da sessão.
+     * @param poltronas 
+     */
+    public void setPoltronas(int[] poltronas){
+        this.poltronas = poltronas;
+    }
     
 }

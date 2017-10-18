@@ -7,7 +7,7 @@
 package model;
 
 /**
- *
+ * Interface para classe pessoa.
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public interface PessoaInterface {
