@@ -14,17 +14,27 @@ package model;
  */
 public class Filme {
 
-    private int codFilme;
+    private int codFilme; //apenas gerado no arquivo
     private String titulo;
     private String genero;
     private String sinopse;
     private String diretor;
     private int ano;
-    private int clasIndicativa; //em anos
+    private String clasIndicativa;
     private int duracao; //em minutos
     
-    public Filme(int codFilme, String titulo, String genero, String sinopse, String diretor, int ano, int clasIndicativa, int duracao){
+    public Filme(int codFilme, String titulo, String genero, String sinopse, String diretor, int ano, String clasIndicativa, int duracao){
         this.codFilme = codFilme;
+        this.titulo = titulo;
+        this.genero = genero;
+        this.sinopse = sinopse;
+        this.diretor = diretor;
+        this.ano = ano;
+        this.clasIndicativa = clasIndicativa;
+        this.duracao = duracao;
+    }
+    
+    public Filme(String titulo, String genero, String sinopse, String diretor, int ano, String clasIndicativa, int duracao){
         this.titulo = titulo;
         this.genero = genero;
         this.sinopse = sinopse;
@@ -137,7 +147,7 @@ public class Filme {
      * Obter classificação indicativa do filme.
      * @return the clasIndicativa
      */
-    public int getClasIndicativa() {
+    public String getClasIndicativa() {
         return clasIndicativa;
     }
 
@@ -145,7 +155,7 @@ public class Filme {
      * Definir classificação indicativa do filme.
      * @param clasIndicativa the clasIndicativa to set
      */
-    public void setClasIndicativa(int clasIndicativa) {
+    public void setClasIndicativa(String clasIndicativa) {
         this.clasIndicativa = clasIndicativa;
     }
 

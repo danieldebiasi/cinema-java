@@ -21,12 +21,8 @@ public interface PessoaInterface {
     public void setEndereco(String endereco);
     public String getTelefone();
     public void setTelefone(String telefone);
-    public int getDiaNascimento();
-    public void setDiaNascimento(int diaNascimento);
-    public int getMesNascimento();
-    public void setMesNascimento(int mesNascimento);
-    public int getAnoNascimento();
-    public void setAnoNascimento(int anoNascimento);
-    public double getSalario();
-    public void setSalario(double salario);    
+    public String getDataNasc();
+    public void setDataNasc(String diaNascimento);
+    public String getSalario();
+    public void setSalario(String salario);    
 }

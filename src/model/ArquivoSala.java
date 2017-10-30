@@ -7,13 +7,18 @@
 
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +29,7 @@ import java.util.logging.Logger;
  */
 public class ArquivoSala extends Arquivo {
     
-    private final String arquivo = "salas.csv";
+    public static final String arquivo = "salas.csv";
     private final Path arquivoPath = FileSystems.getDefault().getPath(arquivo);
     
     public ArquivoSala(){
@@ -84,29 +89,70 @@ public class ArquivoSala extends Arquivo {
      */
     public Sala buscar(int numSala){
         Sala sala = null;
-        File file = new File(arquivo);
+        FileReader file;
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
-            scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
+            try {
+                reader.readLine();
+                String rset = reader.readLine();
                 
-                if(split[0].equals(numSala)){
-                    sala = new Sala(Integer.parseInt(split[0]), split[1]);
+                while(rset != null){
+                    String[] split = rset.split(";");
                     
-                    break;
+                    if(Integer.parseInt(split[0]) == numSala){                    
+                        sala = new Sala(Integer.parseInt(split[0]), split[1]);
+                    
+                        break;
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }       
         
         return sala;
+    }
+    
+    public List<Sala> getAll(){
+        List<Sala> salas = new ArrayList<>();
+        Sala sala = null;
+        FileReader file;
+        
+        if(Files.exists(arquivoPath)){        
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        sala = new Sala(Integer.parseInt(split[0]), split[1]);
+
+                        salas.add(sala);
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
+            }         
+        }
+        
+        return salas;
     }
     
     /**

@@ -7,8 +7,15 @@
 
 package model;
 
-import java.io.File;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Esta classe contém os métodos para manipulação dos arquivos utilizados no sistema.
@@ -22,18 +29,32 @@ abstract class Arquivo {
      * @param arquivo
      * @return incremento
      */
-    public int incremento(String arquivo){
+    public static int incremento(String arquivo){
         int incremento = 1;
-               
-        File file = new File(arquivo);
+        Path arquivoPath = FileSystems.getDefault().getPath(arquivo);
         
-        Scanner scanner = new Scanner(arquivo);
-        String rset = null;
+        if(Files.exists(arquivoPath)){
+            try {
+                FileReader file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
 
-        scanner.nextLine();
+                try {
+                    reader.readLine();
 
-        while(scanner.hasNext()){
-            incremento++;
+                    while(reader.readLine() != null){
+                        incremento++;
+                    }
+
+                    file.close();
+                    reader.close();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Arquivo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Arquivo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         return incremento;

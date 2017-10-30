@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de pesquisa de funcionários.
  * @author Daniel
  */
 public class PesquisaFuncionario extends javax.swing.JDialog {

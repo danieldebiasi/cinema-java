@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de vendas.
  * @author Daniel
  */
 public class Venda extends javax.swing.JDialog {

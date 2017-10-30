@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface da tela principal.
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -57,7 +57,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinema");
         setBackground(new java.awt.Color(154, 201, 249));
-        setPreferredSize(new java.awt.Dimension(780, 420));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(159, 168, 255));
@@ -85,8 +84,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jLabelSair.setToolTipText("Sair");
         jLabelSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelSairMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelSairMouseReleased(evt);
             }
         });
 
@@ -285,10 +284,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         dialog.setVisible(true);
     }//GEN-LAST:event_jMenuItemConSessoesActionPerformed
 
-    private void jLabelSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSairMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabelSairMouseClicked
-
     private void jMenuItemConPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConPessoasActionPerformed
         ConsultaPessoa dialog = new ConsultaPessoa(this, true);
         dialog.setVisible(true);
@@ -298,6 +293,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Venda dialog = new Venda(this, true);
         dialog.setVisible(true);
     }//GEN-LAST:event_jMenuItemNovaVendaActionPerformed
+
+    private void jLabelSairMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSairMouseReleased
+        System.exit(0);
+    }//GEN-LAST:event_jLabelSairMouseReleased
 
     /**
      * @param args the command line arguments

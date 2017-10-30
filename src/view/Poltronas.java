@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de seleção de poltronas.
  * @author Daniel
  */
 public class Poltronas extends javax.swing.JDialog {

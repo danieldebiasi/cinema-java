@@ -16,16 +16,23 @@ public class Sessao {
     private int codSessao;
     private Filme filme;
     private Sala sala;
-    private int hora;
-    private int minuto;
+    private String hora;
     private int[] poltronas = new int[50];
     
-    public Sessao(int codSessao, Filme filme, Sala sala, int hora, int minuto, int[] poltronas){
+    public Sessao(int codSessao, Filme filme, Sala sala, String hora, int[] poltronas){
         this.codSessao = codSessao;
         this.filme = filme;
         this.sala = sala;
         this.hora = hora;
-        this.minuto = minuto;
+        for(int i=0; i < poltronas.length; i++){
+            poltronas[i] = 0;
+        }
+    }
+    
+    public Sessao(Filme filme, Sala sala, String hora){
+        this.filme = filme;
+        this.sala = sala;
+        this.hora = hora;
         for(int i=0; i < poltronas.length; i++){
             poltronas[i] = 0;
         }
@@ -86,7 +93,7 @@ public class Sessao {
      * Obter hora da sessão.
      * @return the hora
      */
-    public int getHora() {
+    public String getHora() {
         return hora;
     }
 
@@ -94,26 +101,10 @@ public class Sessao {
      * Definir hora da sessão.
      * @param hora the hora to set
      */
-    public void setHora(int hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
-    /**
-     * Obter minuto da sessão.
-     * @return the minuto
-     */
-    public int getMinuto() {
-        return minuto;
-    }
-
-    /**
-     * Definir minuto da sessão.
-     * @param minuto the minuto to set
-     */
-    public void setMinuto(int minuto) {
-        this.minuto = minuto;
-    }    
-    
     /**
      * Obter poltronas da sessão.
      * @return 

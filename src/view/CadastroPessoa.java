@@ -6,14 +6,19 @@
  */
 package view;
 
+import control.ControlePessoa;
+import javax.swing.JOptionPane;
+
 /**
- *
+ * Esta classe é responsável pelo cadastro de pessoas.
  * @author Daniel
  */
 public class CadastroPessoa extends javax.swing.JDialog {
 
     /**
      * Creates new form CadastroPessoas
+     * @param parent
+     * @param modal
      */
     public CadastroPessoa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -313,11 +318,6 @@ public class CadastroPessoa extends javax.swing.JDialog {
         jLabel20.setText("Contrato:");
 
         jTextFieldContrato.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTextFieldContrato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldContratoActionPerformed(evt);
-            }
-        });
 
         jButtonGConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonGConfirmar.setText("Confirmar");
@@ -465,7 +465,17 @@ public class CadastroPessoa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFConfirmarActionPerformed
-
+        String msg = ControlePessoa.tryCadastroFuncionario(jTextFieldFNome.getText(), jTextFieldFRg.getText(),
+                                    jFormattedTextFieldFCpf.getText(), jTextFieldFEndereco.getText(),
+                                    jTextFieldFTelefone.getText(), jFormattedTextFieldFDataNasc.getText(),
+                                    jTextFieldFSalario.getText(), jFormattedTextFieldEntrada.getText(),
+                                    jFormattedTextFieldSaida.getText(), jTextFieldCarteira.getText());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Funcionário cadastrado com sucesso!")){
+            this.dispose();
+        }
     }//GEN-LAST:event_jButtonFConfirmarActionPerformed
 
     private void jButtonFCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFCancelarActionPerformed
@@ -473,16 +483,21 @@ public class CadastroPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonFCancelarActionPerformed
 
     private void jButtonGConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGConfirmarActionPerformed
-        // TODO add your handling code here:
+        String msg = ControlePessoa.tryCadastroGestor(jTextFieldGNome.getText(), jTextFieldGRg.getText(),
+                                    jFormattedTextFieldGCpf.getText(), jTextFieldGEndereco.getText(),
+                                    jTextFieldGTelefone.getText(), jFormattedTextFieldGDataNasc.getText(),
+                                    jTextFieldGSalario.getText(), jTextFieldContrato.getText());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Gestor cadastrado com sucesso!")){
+            this.dispose();
+        }
     }//GEN-LAST:event_jButtonGConfirmarActionPerformed
 
     private void jButtonGCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonGCancelarActionPerformed
-
-    private void jTextFieldContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContratoActionPerformed
-        
-    }//GEN-LAST:event_jTextFieldContratoActionPerformed
 
     private void jLabelFVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFVoltarMouseClicked
         this.dispose();

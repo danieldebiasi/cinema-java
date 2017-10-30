@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de consulta de sessões.
  * @author Daniel
  */
 public class ConsultaSessao extends javax.swing.JDialog {

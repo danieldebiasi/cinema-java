@@ -6,8 +6,11 @@
  */
 package view;
 
+import control.ControleFilme;
+import javax.swing.JOptionPane;
+
 /**
- *
+ * Esta classe é responsável pela interface de cadastro de filme.
  * @author Daniel/Gabriel/Roberth/Thiago
  */
 public class CadastroFilme extends javax.swing.JDialog {
@@ -239,12 +242,17 @@ public class CadastroFilme extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
-        System.out.println(jTextFieldTitulo.getText());
-        System.out.println(jTextFieldDiretor.getText());
-        System.out.println(jTextFieldAno.getText());
-        System.out.println(jTextFieldDuracao.getText());
-        System.out.println(jComboBoxClasIndicativa.getSelectedItem().toString());
-        System.out.println(jTextAreaSinopse.getText());
+        
+        String msg = ControleFilme.tryCadastro(jTextFieldTitulo.getText(), jTextFieldDiretor.getText(),
+                              jTextFieldGenero.getText(), jTextFieldAno.getText(), jTextFieldDuracao.getText(), 
+                              jComboBoxClasIndicativa.getSelectedItem(), jTextAreaSinopse.getText());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Filme cadastrado com sucesso!")){
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jLabelVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseClicked

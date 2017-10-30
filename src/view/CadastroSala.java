@@ -6,8 +6,12 @@
  */
 package view;
 
+import control.ControleSala;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
- *
+ * Esta classe é responsável pela interface de cadastro de salas.
  * @author Daniel
  */
 public class CadastroSala extends javax.swing.JDialog {
@@ -34,7 +38,7 @@ public class CadastroSala extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        jSpinnerNumero = new javax.swing.JSpinner();
         jButtonConfirmar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jComboBoxStatus = new javax.swing.JComboBox<>();
@@ -54,7 +58,9 @@ public class CadastroSala extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel2.setText("Status:");
 
-        jSpinner1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jSpinnerNumero.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jSpinnerNumero.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        jSpinnerNumero.setValue(ControleSala.getProximoCodigo());
 
         jButtonConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonConfirmar.setText("Confirmar");
@@ -92,7 +98,7 @@ public class CadastroSala extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSpinnerNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -110,7 +116,7 @@ public class CadastroSala extends javax.swing.JDialog {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinnerNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,7 +149,14 @@ public class CadastroSala extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
-
+        String msg = ControleSala.tryCadastro(jSpinnerNumero.getValue().toString(),
+                                              jComboBoxStatus.getSelectedItem());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Sala cadastrada com sucesso!")){
+            this.dispose();
+        }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     /**
@@ -197,6 +210,6 @@ public class CadastroSala extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinnerNumero;
     // End of variables declaration//GEN-END:variables
 }

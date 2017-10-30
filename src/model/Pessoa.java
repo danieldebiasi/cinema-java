@@ -20,20 +20,16 @@ abstract class Pessoa implements PessoaInterface {
     private String cpf;
     private String endereco;
     private String telefone;
-    private int diaNascimento;
-    private int mesNascimento;
-    private int anoNascimento;   
-    private double salario;
+    private String dataNasc; 
+    private String salario;
     
-    public Pessoa(String nome, String rg, String cpf, String endereco, String telefone, int diaNascimento, int mesNascimento, int anoNascimento, double salario){
+    public Pessoa(String nome, String rg, String cpf, String endereco, String telefone, String dataNasc, String salario){
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.diaNascimento = diaNascimento;
-        this.mesNascimento = mesNascimento;
-        this.anoNascimento = anoNascimento;
+        this.dataNasc = dataNasc;
         this.salario = salario;
     }
     
@@ -132,8 +128,8 @@ abstract class Pessoa implements PessoaInterface {
      * @return the diaNascimento
      */
     @Override
-    public int getDiaNascimento() {
-        return diaNascimento;
+    public String getDataNasc() {
+        return dataNasc;
     }
 
     /**
@@ -141,44 +137,8 @@ abstract class Pessoa implements PessoaInterface {
      * @param diaNascimento the diaNascimento to set
      */
     @Override
-    public void setDiaNascimento(int diaNascimento) {
-        this.diaNascimento = diaNascimento;
-    }
-
-    /**
-     * Obter mês de nascimento da pessoa.
-     * @return the mesNascimento
-     */
-    @Override
-    public int getMesNascimento() {
-        return mesNascimento;
-    }
-
-    /**
-     * Definir mês de nascimento da pessoa.
-     * @param mesNascimento the mesNascimento to set
-     */
-    @Override
-    public void setMesNascimento(int mesNascimento) {
-        this.mesNascimento = mesNascimento;
-    }
-
-    /**
-     * Obter ano de nascimento da pessoa.
-     * @return the anoNascimento
-     */
-    @Override
-    public int getAnoNascimento() {
-        return anoNascimento;
-    }
-
-    /**
-     * Definir ano de nascimento da pessoa.
-     * @param anoNascimento the anoNascimento to set
-     */
-    @Override
-    public void setAnoNascimento(int anoNascimento) {
-        this.anoNascimento = anoNascimento;
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
     /**
@@ -186,7 +146,7 @@ abstract class Pessoa implements PessoaInterface {
      * @return the salario
      */
     @Override
-    public double getSalario() {
+    public String getSalario() {
         return salario;
     }
 
@@ -195,7 +155,7 @@ abstract class Pessoa implements PessoaInterface {
      * @param salario the salario to set
      */
     @Override
-    public void setSalario(double salario) {
+    public void setSalario(String salario) {
         this.salario = salario;
     }
     

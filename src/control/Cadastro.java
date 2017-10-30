@@ -37,22 +37,26 @@ public class Cadastro {
     /**
      * Este método é responsável peor requisitar o cadastro de filmes.
      * @param filme 
+     * @return boolean
      */
-    public void cadastrar(Filme filme){
+    public String cadastrar(Filme filme){
         try {
             ArquivoFilme arquivo = new ArquivoFilme();
             arquivo.inserir(filme);
+            return "Filme cadastrado com sucesso!";
         } catch (FilmeDuplicadoException ex) {
             LOGGER.log(Level.SEVERE, ex.getMessage());
+            return ex.getMessage();
         }
     }
     
     /**
      * Este método é responsável por requisitar o cadastro de funcionários.
      * @param funcionario 
+     * @return String
      * @throws CpfException 
      */
-    public void cadastrar(Funcionario funcionario) throws CpfException{
+    public String cadastrar(Funcionario funcionario) throws CpfException{
         if(funcionario.getCpf().length() != 11){
             throw new CpfException();
         }
@@ -60,18 +64,21 @@ public class Cadastro {
         try{
             ArquivoFuncionario arquivo = new ArquivoFuncionario();
             arquivo.inserir(funcionario);
+            return "Funcionário cadastrado com sucesso!";
         }
         catch (FuncionarioDuplicadoException ex){
             LOGGER.log(Level.SEVERE, ex.getMessage());
+            return ex.getMessage();
         }        
     }
     
     /**
      * Este método é responsável por requisitar o cadastro de gestores.
      * @param gestor 
+     * @return String
      * @throws CpfException 
      */
-    public void cadastrar(Gestor gestor) throws CpfException{
+    public String cadastrar(Gestor gestor) throws CpfException{
         if(gestor.getCpf().length() != 11){
             throw new CpfException();
         }
@@ -79,35 +86,43 @@ public class Cadastro {
         try{
             ArquivoGestor arquivo = new ArquivoGestor();
             arquivo.inserir(gestor);
+            return "Gestor cadastrado com sucesso!";
         }
         catch (GestorDuplicadoException ex){
             LOGGER.log(Level.SEVERE, ex.getMessage());
+            return ex.getMessage();
         }
     }
     
     /**
      * Este método é responsável por requisitar o cadastro de salas.
      * @param sala 
+     * @return String
      */
-    public void cadastrar(Sala sala){
+    public String cadastrar(Sala sala){
         try {
             ArquivoSala arquivo = new ArquivoSala();
             arquivo.inserir(sala);
+            return "Sala cadastrada com sucesso!";
         } catch (SalaDuplicadaException ex) {
             LOGGER.log(Level.SEVERE, ex.getMessage());
+            return ex.getMessage();
         }
     }
     
     /**
      * Este método é responsável por requisitar o cadastro de sessões.
      * @param sessao 
+     * @return String
      */
-    public void cadastrar(Sessao sessao){
+    public String cadastrar(Sessao sessao){
         try {
             ArquivoSessao arquivo = new ArquivoSessao();
             arquivo.inserir(sessao);
+            return "Sessão cadastrada com sucesso!";
         } catch (SessaoDuplicadaException ex) {
             LOGGER.log(Level.SEVERE, ex.getMessage());
+            return ex.getMessage();
         }
     }    
 }

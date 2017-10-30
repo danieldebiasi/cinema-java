@@ -47,11 +47,7 @@ public class ArquivoGestor extends Arquivo {
                 writer.write(";");
                 writer.write("telefone");
                 writer.write(";");
-                writer.write(";diaNacimento");
-                writer.write(";");
-                writer.write("mesNascimento");
-                writer.write(";");
-                writer.write("anoNascimento");
+                writer.write("dataNasc");
                 writer.write(";");
                 writer.write("salario");
                 writer.write(";");
@@ -90,15 +86,11 @@ public class ArquivoGestor extends Arquivo {
                 writer.write(";");
                 writer.write(gestor.getTelefone());
                 writer.write(";");
-                writer.write(Integer.toString(gestor.getDiaNascimento()));
+                writer.write(gestor.getDataNasc());
                 writer.write(";");
-                writer.write(Integer.toString(gestor.getMesNascimento()));
+                writer.write(gestor.getSalario());
                 writer.write(";");
-                writer.write(Integer.toString(gestor.getAnoNascimento()));
-                writer.write(";");
-                writer.write(Double.toString(gestor.getSalario()));
-                writer.write(";");
-                writer.write(Integer.toString(gestor.getNumContrato()));
+                writer.write(gestor.getNumContrato());
                 
                 writer.newLine();
                 writer.close();
@@ -130,9 +122,7 @@ public class ArquivoGestor extends Arquivo {
                 
                 if(split[0].equals(rg)){
                     gestor = new Gestor(split[0], split[1], split[2], split[3], 
-                            split[4], Integer.parseInt(split[5]), Integer.parseInt(split[6]), 
-                            Integer.parseInt(split[7]), Double.parseDouble(split[8]), 
-                            Integer.parseInt(split[9]));
+                            split[4], split[5], split[6], split[7]);
                     
                     break;
                 }
@@ -168,11 +158,9 @@ public class ArquivoGestor extends Arquivo {
                     rset += gestor.getCpf().concat(";");
                     rset += gestor.getEndereco().concat(";");
                     rset += gestor.getTelefone().concat(";");
-                    rset += Integer.toString(gestor.getDiaNascimento()).concat(";");
-                    rset += Integer.toString(gestor.getMesNascimento()).concat(";");
-                    rset += Integer.toString(gestor.getAnoNascimento()).concat(";");
-                    rset += Double.toString(gestor.getSalario()).concat(";");
-                    rset += Integer.toString(gestor.getNumContrato()).concat(";");
+                    rset += gestor.getDataNasc().concat(";");
+                    rset += gestor.getSalario().concat(";");
+                    rset += gestor.getNumContrato().concat(";");
                    
                     fset += rset;
                     
@@ -223,9 +211,7 @@ public class ArquivoGestor extends Arquivo {
                     rset += split[4].concat(";");
                     rset += split[5].concat(";");
                     rset += split[6].concat(";");
-                    rset += split[7].concat(";");
-                    rset += split[8].concat(";");
-                    rset += split[9];
+                    rset += split[7];
                     
                     fset += rset+"\n";
                 }

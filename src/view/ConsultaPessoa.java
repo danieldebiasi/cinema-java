@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de consulta de pessoas.
  * @author Daniel
  */
 public class ConsultaPessoa extends javax.swing.JDialog {

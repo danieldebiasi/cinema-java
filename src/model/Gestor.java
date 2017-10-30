@@ -15,10 +15,10 @@ package model;
  */
 public class Gestor extends Pessoa {
 
-    private int numContrato;
+    private String numContrato;
     
-    public Gestor(String nome, String rg, String cpf, String endereco, String telefone, int diaNascimento, int mesNascimento, int anoNascimento, double salario, int numContrato){
-        super(nome, rg, cpf, endereco, telefone, diaNascimento, mesNascimento, anoNascimento, salario);
+    public Gestor(String nome, String rg, String cpf, String endereco, String telefone, String dataNasc, String salario, String numContrato){
+        super(nome, rg, cpf, endereco, telefone, dataNasc, salario);
         this.numContrato = numContrato;
     }
     
@@ -26,7 +26,7 @@ public class Gestor extends Pessoa {
      * Obter número do contrato do gestor.
      * @return the numContrato
      */
-    public int getNumContrato() {
+    public String getNumContrato() {
         return numContrato;
     }
 
@@ -34,7 +34,7 @@ public class Gestor extends Pessoa {
      * Definir número do contrato do gestor.
      * @param numContrato the numContrato to set
      */
-    public void setNumContrato(int numContrato) {
+    public void setNumContrato(String numContrato) {
         this.numContrato = numContrato;
     }
        

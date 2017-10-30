@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de consulta de salas.
  * @author Daniel
  */
 public class ConsultaSala extends javax.swing.JDialog {

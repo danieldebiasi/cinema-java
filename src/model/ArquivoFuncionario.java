@@ -47,11 +47,7 @@ public class ArquivoFuncionario extends Arquivo {
                 writer.write(",");
                 writer.write("telefone");
                 writer.write(",");
-                writer.write("diaNacimento");
-                writer.write(",");
-                writer.write("mesNascimento");
-                writer.write(",");
-                writer.write("anoNascimento");
+                writer.write("dataNasc");
                 writer.write(",");
                 writer.write("salario");
                 writer.write(",");
@@ -59,11 +55,7 @@ public class ArquivoFuncionario extends Arquivo {
                 writer.write(",");
                 writer.write("horaEntrada");
                 writer.write(",");
-                writer.write("minutoEntrada");
-                writer.write(",");
                 writer.write("horaSaida");
-                writer.write(",");
-                writer.write("minutoSaida");
                 
                 writer.newLine();
                 writer.close();
@@ -99,23 +91,15 @@ public class ArquivoFuncionario extends Arquivo {
                 writer.write(";");
                 writer.write(funcionario.getTelefone());
                 writer.write(";");
-                writer.write(Integer.toString(funcionario.getDiaNascimento()));
+                writer.write(funcionario.getDataNasc());
                 writer.write(";");
-                writer.write(Integer.toString(funcionario.getMesNascimento()));
-                writer.write(";");
-                writer.write(Integer.toString(funcionario.getAnoNascimento()));
-                writer.write(";");
-                writer.write(Double.toString(funcionario.getSalario()));
+                writer.write(funcionario.getSalario());
                 writer.write(";");
                 writer.write(funcionario.getCarteiraDeTrabalho());
                 writer.write(";");
-                writer.write(Integer.toString(funcionario.getHoraEntrada()));
+                writer.write(funcionario.getHoraEntrada());
                 writer.write(";");
-                writer.write(Integer.toString(funcionario.getMinutoEntrada()));
-                writer.write(";");
-                writer.write(Integer.toString(funcionario.getHoraSaida()));
-                writer.write(";");
-                writer.write(Integer.toString(funcionario.getMinutoSaida()));
+                writer.write(funcionario.getHoraSaida());
                 
                 writer.newLine();
                 writer.close();
@@ -147,10 +131,7 @@ public class ArquivoFuncionario extends Arquivo {
                 
                 if(split[0].equals(rg)){
                     funcionario = new Funcionario(split[0], split[1], split[2], split[3], 
-                            split[4], Integer.parseInt(split[5]), Integer.parseInt(split[6]), 
-                            Integer.parseInt(split[7]), Double.parseDouble(split[8]), split[9], 
-                            Integer.parseInt(split[10]), Integer.parseInt(split[11]),
-                            Integer.parseInt(split[12]), Integer.parseInt(split[13]));
+                            split[4], split[5], split[6], split[7], split[8], split[9]);
                     
                     break;
                 }
@@ -186,15 +167,11 @@ public class ArquivoFuncionario extends Arquivo {
                     rset += funcionario.getCpf().concat(";");
                     rset += funcionario.getEndereco().concat(";");
                     rset += funcionario.getTelefone().concat(";");
-                    rset += Integer.toString(funcionario.getDiaNascimento()).concat(";");
-                    rset += Integer.toString(funcionario.getMesNascimento()).concat(";");
-                    rset += Integer.toString(funcionario.getAnoNascimento()).concat(";");
-                    rset += Double.toString(funcionario.getSalario()).concat(";");
+                    rset += funcionario.getDataNasc().concat(";");
+                    rset += funcionario.getSalario().concat(";");
                     rset += funcionario.getCarteiraDeTrabalho().concat(";");
-                    rset += Integer.toString(funcionario.getHoraEntrada()).concat(";");
-                    rset += Integer.toString(funcionario.getMinutoEntrada()).concat(";");
-                    rset += Integer.toString(funcionario.getHoraSaida()).concat(";");
-                    rset += Integer.toString(funcionario.getMinutoSaida()).concat(";");
+                    rset += funcionario.getHoraEntrada().concat(";");
+                    rset += funcionario.getHoraSaida();
                     
                     fset += rset;
                     
@@ -247,11 +224,7 @@ public class ArquivoFuncionario extends Arquivo {
                     rset += split[6].concat(";");
                     rset += split[7].concat(";");
                     rset += split[8].concat(";");
-                    rset += split[9].concat(";");
-                    rset += split[10].concat(";");
-                    rset += split[11].concat(";");
-                    rset += split[12].concat(";");
-                    rset += split[13];
+                    rset += split[9];
                     
                     fset += rset+"\n";
                 }

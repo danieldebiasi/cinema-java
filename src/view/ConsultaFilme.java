@@ -6,12 +6,17 @@
  */
 package view;
 
+import control.ControleFilme;
+import control.Resposta;
+
 /**
- *
+ * Esta classe é responsável pela interface de consulta de filmes.
  * @author Daniel
  */
 public class ConsultaFilme extends javax.swing.JDialog {
 
+    private final Resposta rp = new Resposta();
+    
     /**
      * Creates new form ConsultaFilme
      */
@@ -73,6 +78,11 @@ public class ConsultaFilme extends javax.swing.JDialog {
         jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/edit.png"))); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.setEnabled(false);
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         jButtonExcluir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
@@ -257,9 +267,35 @@ public class ConsultaFilme extends javax.swing.JDialog {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         java.awt.Frame parent = (java.awt.Frame) this.getParent();
-        PesquisaFilme dialog = new PesquisaFilme(parent, true);
+        PesquisaFilme dialog = new PesquisaFilme(parent, true, rp);
         dialog.setVisible(true);
+        
+        if(rp.getMsg() != null){
+            String[] busca = ControleFilme.buscar(Integer.parseInt(rp.getMsg()));
+            
+            jTextFieldCodigo.setText(rp.getMsg());
+            jTextFieldTitulo.setText(busca[0]);
+            jTextFieldGenero.setText(busca[1]);
+            jTextFieldDiretor.setText(busca[2]);
+            jTextFieldAno.setText(busca[3]);
+            jTextFieldDuracao.setText(busca[4]);
+            jComboBoxClasIndicativa.setSelectedItem(busca[5]);
+            jTextAreaSinopse.setText(busca[6]);
+            
+            jButtonEditar.setEnabled(true);
+        }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        jTextFieldCodigo.setEnabled(true);
+        jTextFieldTitulo.setEnabled(true);
+        jTextFieldGenero.setEnabled(true);
+        jTextFieldDiretor.setEnabled(true);
+        jTextFieldAno.setEnabled(true);
+        jTextFieldDuracao.setEnabled(true);
+        jComboBoxClasIndicativa.setEnabled(true);
+        jTextAreaSinopse.setEnabled(true);
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments

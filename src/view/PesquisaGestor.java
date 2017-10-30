@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de pesquisa de gestores.
  * @author Daniel
  */
 public class PesquisaGestor extends javax.swing.JDialog {

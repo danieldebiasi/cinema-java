@@ -7,13 +7,18 @@
 
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -88,7 +93,7 @@ public final class ArquivoFilme extends Arquivo {
                 writer.write(";");
                 writer.write(Integer.toString(filme.getAno()));
                 writer.write(";");
-                writer.write(Integer.toString(filme.getClasIndicativa()));
+                writer.write(filme.getClasIndicativa());
                 writer.write(";");
                 writer.write(Integer.toString(filme.getDuracao()));
                 
@@ -107,32 +112,77 @@ public final class ArquivoFilme extends Arquivo {
      * @return filme
      */
     public Filme buscar(int codFilme){
+        
         Filme filme = null;
-        File file = new File(arquivo);
+        FileReader file;
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
-            scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
+            try {
+                reader.readLine();
+                String rset = reader.readLine();
                 
-                if(Integer.parseInt(split[0]) == codFilme){
-                    filme = new Filme(Integer.parseInt(split[0]), split[1], split[2], 
-                            split[3], split[4], Integer.parseInt(split[5]),
-                            Integer.parseInt(split[6]), Integer.parseInt(split[7]));
+                while(rset != null){
+                    String[] split = rset.split(";");
                     
-                    break;
+                    if(Integer.parseInt(split[0]) == codFilme){                    
+                        filme = new Filme(Integer.parseInt(split[0]), split[1], split[2], split[3],
+                                    split[4], Integer.parseInt(split[5]), split[6], Integer.parseInt(split[7]));
+                    
+                        break;
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }       
         
         return filme;
+        
+    }
+    
+    /**
+     * Este método é responsável por buscar todos os filmes do arquivo de filmes.
+     * @return filmes
+     */
+    public List<Filme> getAll(){
+        List<Filme> filmes = new ArrayList<>();
+        Filme filme = null;
+        FileReader file;
+        
+        try {
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
+            
+            try {
+                reader.readLine();
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    filme = new Filme(Integer.parseInt(split[0]), split[1], split[2], split[3],
+                                split[4], Integer.parseInt(split[5]), split[6], Integer.parseInt(split[7]));
+                    
+                    filmes.add(filme);
+                    rset = reader.readLine();
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        
+        return filmes;
     }
     
     /**
@@ -160,7 +210,7 @@ public final class ArquivoFilme extends Arquivo {
                     rset += filme.getSinopse().concat(";");
                     rset += filme.getDiretor().concat(";");
                     rset += Integer.toString(filme.getAno()).concat(";");
-                    rset += Integer.toString(filme.getClasIndicativa()).concat(";");
+                    rset += filme.getClasIndicativa().concat(";");
                     rset += Integer.toString(filme.getDuracao());
                 }
                 

@@ -45,8 +45,6 @@ public class ArquivoSessao extends Arquivo {
                 writer.write(";");
                 writer.write("hora");
                 writer.write(";");
-                writer.write("minuto");
-                writer.write(";");
                 for(int i = 0; i < 50; i++){
                     writer.write("poltrona"+Integer.toString(i+1));
                     if(i != 49) writer.write(";");
@@ -75,15 +73,13 @@ public class ArquivoSessao extends Arquivo {
         try {
             FileWriter fwriter = new FileWriter(arquivo, true);
             try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                writer.write(Integer.toString(sessao.getCodSessao()));
+                writer.write(Integer.toString(this.incremento(arquivo)));
                 writer.write(";");
                 writer.write(Integer.toString(sessao.getFilme().getCodFilme()));
                 writer.write(";");
                 writer.write(Integer.toString(sessao.getSala().getNumSala()));
                 writer.write(";");
-                writer.write(Integer.toString(sessao.getHora()));
-                writer.write(";");
-                writer.write(Integer.toString(sessao.getMinuto()));
+                writer.write(sessao.getHora());
                 writer.write(";");
                 for(int i = 0; i < 50; i++){
                     writer.write(Integer.toString(sessao.getPoltronas()[i]));
@@ -131,7 +127,7 @@ public class ArquivoSessao extends Arquivo {
                     }
                     
                     sessao = new Sessao(Integer.parseInt(split[0]), filme, sala, 
-                            Integer.parseInt(split[3]), Integer.parseInt(split[4]), poltronas);
+                            split[3], poltronas);
                     
                     break;
                 }
@@ -165,8 +161,7 @@ public class ArquivoSessao extends Arquivo {
                     rset = Integer.toString(sessao.getCodSessao()).concat(";");
                     rset += Integer.toString(sessao.getFilme().getCodFilme()).concat(";");
                     rset += Integer.toString(sessao.getSala().getNumSala()).concat(";");
-                    rset += Integer.toString(sessao.getHora()).concat(";");
-                    rset += Integer.toString(sessao.getMinuto()).concat(";");
+                    rset += sessao.getHora().concat(";");
                     for(int i = 0; i < 50; i++){
                         rset += Integer.toString(sessao.getPoltronas()[i]);
                         if(i != 49) rset+=";";
@@ -218,9 +213,8 @@ public class ArquivoSessao extends Arquivo {
                     rset += split[1].concat(";");
                     rset += split[2].concat(";");
                     rset += split[3].concat(";");
-                    rset += split[4].concat(";");
                     for(int i = 0; i < 50; i++){
-                        rset += split[i+5];
+                        rset += split[i+4];
                         if(i != 49) rset += (";");
                     }
 

@@ -16,18 +16,14 @@ package model;
 public class Funcionario extends Pessoa {
 
     private String carteiraDeTrabalho;
-    private int horaEntrada;
-    private int minutoEntrada;
-    private int horaSaida;
-    private int minutoSaida; 
+    private String horaEntrada;
+    private String horaSaida;
     
-    public Funcionario(String nome, String rg, String cpf, String endereco, String telefone, int diaNascimento, int mesNascimento, int anoNascimento, double salario, String carteiraDeTrabalho, int horaEntrada, int minutoEntrada, int horaSaida, int minutoSaida){
-        super(nome, rg, cpf, endereco, telefone, diaNascimento, mesNascimento, anoNascimento, salario);
+    public Funcionario(String nome, String rg, String cpf, String endereco, String telefone, String dataNasc, String salario, String carteiraDeTrabalho, String horaEntrada, String horaSaida){
+        super(nome, rg, cpf, endereco, telefone, dataNasc, salario);
         this.carteiraDeTrabalho = carteiraDeTrabalho;
         this.horaEntrada = horaEntrada;
-        this.minutoEntrada = minutoEntrada;
         this.horaSaida = horaSaida;
-        this.minutoSaida = minutoSaida;
     }
     
     /**
@@ -50,7 +46,7 @@ public class Funcionario extends Pessoa {
      * Obter hora de entrada do funcionário.
      * @return the horaEntrada
      */
-    public int getHoraEntrada() {
+    public String getHoraEntrada() {
         return horaEntrada;
     }
 
@@ -58,31 +54,15 @@ public class Funcionario extends Pessoa {
      * Definir hora de entrada do funcionário.
      * @param horaEntrada the horaEntrada to set
      */
-    public void setHoraEntrada(int horaEntrada) {
+    public void setHoraEntrada(String horaEntrada) {
         this.horaEntrada = horaEntrada;
-    }
-
-    /**
-     * Obter minuto de entrada do funcionário.
-     * @return the minutoEntrada
-     */
-    public int getMinutoEntrada() {
-        return minutoEntrada;
-    }
-
-    /**
-     * Definir minuto de entrada do funcionário.
-     * @param minutoEntrada the minutoEntrada to set
-     */
-    public void setMinutoEntrada(int minutoEntrada) {
-        this.minutoEntrada = minutoEntrada;
     }
 
     /**
      * Obter hora de saída do funcionário.
      * @return the horaSaida
      */
-    public int getHoraSaida() {
+    public String getHoraSaida() {
         return horaSaida;
     }
 
@@ -90,24 +70,7 @@ public class Funcionario extends Pessoa {
      * Definir hora de saída do funcionário.
      * @param horaSaida the horaSaida to set
      */
-    public void setHoraSaida(int horaSaida) {
+    public void setHoraSaida(String horaSaida) {
         this.horaSaida = horaSaida;
-    }
-
-    /**
-     * Obter minuto de saída do funcionário.
-     * @return the minutoSaida
-     */
-    public int getMinutoSaida() {
-        return minutoSaida;
-    }
-
-    /**
-     * Definir minuto de saída do funcionário.
-     * @param minutoSaida the minutoSaida to set
-     */
-    public void setMinutoSaida(int minutoSaida) {
-        this.minutoSaida = minutoSaida;
-    }
-    
+    }    
 }

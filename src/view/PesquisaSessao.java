@@ -7,7 +7,7 @@
 package view;
 
 /**
- *
+ * Esta classe é responsável pela interface de pesquisa de sessões.
  * @author Daniel
  */
 public class PesquisaSessao extends javax.swing.JDialog {
