@@ -6,18 +6,98 @@
  */
 package view;
 
+import control.ControleSessao;
+import control.Resposta;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JButton;
+
 /**
  * Esta classe é responsável pela interface de seleção de poltronas.
  * @author Daniel
  */
 public class Poltronas extends javax.swing.JDialog {
 
+    private int codSessao;
+    private Resposta rp;
+    String selecionada = "";
+    
     /**
      * Creates new form Poltronas
      */
-    public Poltronas(java.awt.Frame parent, boolean modal) {
+    public Poltronas(java.awt.Frame parent, boolean modal, String codSessao, Resposta rp) {
         super(parent, modal);
         initComponents();
+        
+        this.codSessao = Integer.parseInt(codSessao);
+        this.rp = rp;
+        
+        List<JButton> buttonsPoltronas = new ArrayList<>();
+        buttonsPoltronas.add(jButtonPoltrona1);
+        buttonsPoltronas.add(jButtonPoltrona2);
+        buttonsPoltronas.add(jButtonPoltrona3);
+        buttonsPoltronas.add(jButtonPoltrona4);
+        buttonsPoltronas.add(jButtonPoltrona5);
+        buttonsPoltronas.add(jButtonPoltrona6);
+        buttonsPoltronas.add(jButtonPoltrona7);
+        buttonsPoltronas.add(jButtonPoltrona8);
+        buttonsPoltronas.add(jButtonPoltrona9);
+        buttonsPoltronas.add(jButtonPoltrona10);
+        buttonsPoltronas.add(jButtonPoltrona11);
+        buttonsPoltronas.add(jButtonPoltrona12);
+        buttonsPoltronas.add(jButtonPoltrona13);
+        buttonsPoltronas.add(jButtonPoltrona14);
+        buttonsPoltronas.add(jButtonPoltrona15);
+        buttonsPoltronas.add(jButtonPoltrona16);
+        buttonsPoltronas.add(jButtonPoltrona17);
+        buttonsPoltronas.add(jButtonPoltrona18);
+        buttonsPoltronas.add(jButtonPoltrona19);
+        buttonsPoltronas.add(jButtonPoltrona20);
+        buttonsPoltronas.add(jButtonPoltrona21);
+        buttonsPoltronas.add(jButtonPoltrona22);
+        buttonsPoltronas.add(jButtonPoltrona23);
+        buttonsPoltronas.add(jButtonPoltrona24);
+        buttonsPoltronas.add(jButtonPoltrona25);
+        buttonsPoltronas.add(jButtonPoltrona26);
+        buttonsPoltronas.add(jButtonPoltrona27);
+        buttonsPoltronas.add(jButtonPoltrona28);
+        buttonsPoltronas.add(jButtonPoltrona29);
+        buttonsPoltronas.add(jButtonPoltrona30);
+        buttonsPoltronas.add(jButtonPoltrona31);
+        buttonsPoltronas.add(jButtonPoltrona32);
+        buttonsPoltronas.add(jButtonPoltrona33);
+        buttonsPoltronas.add(jButtonPoltrona34);
+        buttonsPoltronas.add(jButtonPoltrona35);
+        buttonsPoltronas.add(jButtonPoltrona36);
+        buttonsPoltronas.add(jButtonPoltrona37);
+        buttonsPoltronas.add(jButtonPoltrona38);
+        buttonsPoltronas.add(jButtonPoltrona39);
+        buttonsPoltronas.add(jButtonPoltrona40);
+        buttonsPoltronas.add(jButtonPoltrona41);
+        buttonsPoltronas.add(jButtonPoltrona42);
+        buttonsPoltronas.add(jButtonPoltrona43);
+        buttonsPoltronas.add(jButtonPoltrona44);
+        buttonsPoltronas.add(jButtonPoltrona45);
+        buttonsPoltronas.add(jButtonPoltrona46);
+        buttonsPoltronas.add(jButtonPoltrona47);
+        buttonsPoltronas.add(jButtonPoltrona48);
+        buttonsPoltronas.add(jButtonPoltrona49);
+        buttonsPoltronas.add(jButtonPoltrona50);
+        
+        if(!rp.getMsg().equals(""))
+            selecionada = rp.getMsg();
+        
+        int[] poltronas = ControleSessao.getPoltronas(this.codSessao);
+        
+        for(int i = 0; i < 50; i++){
+            if(poltronas[i] == 0)
+                buttonsPoltronas.get(i).setBackground(Color.green);
+            if(poltronas[i] == 1)
+                buttonsPoltronas.get(i).setBackground(Color.red);
+            if((!selecionada.equals("")) && (i == (Integer.parseInt(selecionada))-1))
+                buttonsPoltronas.get(i).setBackground(Color.blue);
+        }
     }
 
     /**
@@ -112,19 +192,44 @@ public class Poltronas extends javax.swing.JDialog {
         jLabelTela.setOpaque(true);
 
         jButtonPoltrona1.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona1.setText("01");
+        jButtonPoltrona1.setText("1");
+        jButtonPoltrona1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona11.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona11.setText("11");
+        jButtonPoltrona11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona21.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona21.setText("21");
+        jButtonPoltrona21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona31.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona31.setText("31");
+        jButtonPoltrona31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona41.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona41.setText("41");
+        jButtonPoltrona41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -136,6 +241,7 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.setEnabled(false);
         jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarActionPerformed(evt);
@@ -143,139 +249,364 @@ public class Poltronas extends javax.swing.JDialog {
         });
 
         jButtonPoltrona2.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona2.setText("02");
+        jButtonPoltrona2.setText("2");
+        jButtonPoltrona2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona3.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona3.setText("03");
+        jButtonPoltrona3.setText("3");
+        jButtonPoltrona3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona4.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona4.setText("04");
+        jButtonPoltrona4.setText("4");
+        jButtonPoltrona4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona5.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona5.setText("05");
+        jButtonPoltrona5.setText("5");
+        jButtonPoltrona5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona6.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona6.setText("06");
+        jButtonPoltrona6.setText("6");
+        jButtonPoltrona6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona7.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona7.setText("07");
+        jButtonPoltrona7.setText("7");
+        jButtonPoltrona7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona8.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona8.setText("08");
+        jButtonPoltrona8.setText("8");
+        jButtonPoltrona8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona9.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonPoltrona9.setText("09");
+        jButtonPoltrona9.setText("9");
+        jButtonPoltrona9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona10.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona10.setText("10");
+        jButtonPoltrona10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona12.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona12.setText("12");
+        jButtonPoltrona12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona13.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona13.setText("13");
+        jButtonPoltrona13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona14.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona14.setText("14");
+        jButtonPoltrona14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona15.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona15.setText("15");
+        jButtonPoltrona15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona16.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona16.setText("16");
+        jButtonPoltrona16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona17.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona17.setText("17");
+        jButtonPoltrona17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona18.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona18.setText("18");
+        jButtonPoltrona18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona19.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona19.setText("19");
+        jButtonPoltrona19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona20.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona20.setText("20");
+        jButtonPoltrona20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona30.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona30.setText("30");
+        jButtonPoltrona30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona29.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona29.setText("29");
+        jButtonPoltrona29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona25.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona25.setText("25");
+        jButtonPoltrona25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona22.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona22.setText("22");
+        jButtonPoltrona22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona26.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona26.setText("26");
+        jButtonPoltrona26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona23.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona23.setText("23");
+        jButtonPoltrona23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona27.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona27.setText("27");
+        jButtonPoltrona27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona28.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona28.setText("28");
+        jButtonPoltrona28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona24.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona24.setText("24");
+        jButtonPoltrona24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona35.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona35.setText("35");
+        jButtonPoltrona35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona33.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona33.setText("33");
+        jButtonPoltrona33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona37.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona37.setText("37");
+        jButtonPoltrona37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona40.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona40.setText("40");
+        jButtonPoltrona40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona32.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona32.setText("32");
+        jButtonPoltrona32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona36.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona36.setText("36");
+        jButtonPoltrona36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona38.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona38.setText("38");
+        jButtonPoltrona38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona34.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona34.setText("34");
+        jButtonPoltrona34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona39.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona39.setText("39");
+        jButtonPoltrona39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona43.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona43.setText("43");
+        jButtonPoltrona43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona47.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona47.setText("47");
+        jButtonPoltrona47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona50.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona50.setText("50");
+        jButtonPoltrona50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona44.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona44.setText("44");
+        jButtonPoltrona44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona46.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona46.setText("46");
+        jButtonPoltrona46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona48.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona48.setText("48");
+        jButtonPoltrona48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona49.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona49.setText("49");
+        jButtonPoltrona49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona45.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona45.setText("45");
+        jButtonPoltrona45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         jButtonPoltrona42.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona42.setText("42");
+        jButtonPoltrona42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPoltronaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -524,8 +855,26 @@ public class Poltronas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
-
+        rp.setMsg(selecionada);
+        this.dispose();
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
+
+    private void jButtonPoltronaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPoltronaActionPerformed
+        JButton sel = (JButton) evt.getSource();
+        
+        if(selecionada.equals("") || (selecionada.equals(sel.getText()))){           
+            if(sel.getBackground().toString().equals(Color.green.toString())){ //Marca poltrona
+                sel.setBackground(Color.blue);
+                selecionada = sel.getText();
+                jButtonConfirmar.setEnabled(true);
+            }
+            else if(sel.getBackground().toString().equals(Color.blue.toString())){ //Desmarca poltrona
+                sel.setBackground(Color.green);
+                selecionada = "";
+                jButtonConfirmar.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_jButtonPoltronaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -557,7 +906,7 @@ public class Poltronas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Poltronas dialog = new Poltronas(new javax.swing.JFrame(), true);
+                Poltronas dialog = new Poltronas(new javax.swing.JFrame(), true, null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

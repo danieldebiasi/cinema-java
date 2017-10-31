@@ -111,6 +111,7 @@
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -139,10 +140,7 @@
                               <Component id="jButtonConfirmar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="346" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" alignment="1" min="-2" pref="346" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -167,18 +165,13 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="jTableSessoes">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="0"/>
                 </Property>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="0">
-                    <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
-                    <Column editable="false" title="Filme" type="java.lang.String"/>
-                    <Column editable="false" title="Sala" type="java.lang.Integer"/>
-                    <Column editable="false" title="Hor&#xe1;rio" type="java.lang.String"/>
-                  </Table>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="ControleSessao.updateTable()" type="code"/>
                 </Property>
               </Properties>
             </Component>
@@ -201,6 +194,7 @@
               <Font name="Segoe UI" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Confirmar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConfirmarActionPerformed"/>
@@ -216,6 +210,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldPoltrona">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="0"/>
             </Property>
@@ -228,6 +223,7 @@
               <Font name="Segoe UI" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Selecionar Poltrona"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPoltronaActionPerformed"/>
@@ -254,6 +250,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xe3;o Pagante"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonNPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonMeia">
           <Properties>
@@ -268,6 +267,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Meia"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMeiaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonInteira">
           <Properties>
@@ -282,6 +284,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Inteira"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonInteiraActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -293,6 +298,7 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldValor">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="0"/>
             </Property>

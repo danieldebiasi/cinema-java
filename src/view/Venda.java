@@ -6,18 +6,39 @@
  */
 package view;
 
+import control.ControleSessao;
+import control.Resposta;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  * Esta classe é responsável pela interface de vendas.
  * @author Daniel
  */
 public class Venda extends javax.swing.JDialog {
 
+    private int codSessao;
+    private Resposta rp = new Resposta();
+    
     /**
      * Creates new form Venda
      */
     public Venda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        jTableSessoes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                codSessao = Integer.parseInt(jTableSessoes.getValueAt(jTableSessoes.getSelectedRow(), 0).toString());
+                jTextFieldPoltrona.setText("");
+                jButtonPoltrona.setEnabled(true);
+                jButtonConfirmar.setEnabled(true);                   
+            }
+        });
     }
 
     /**
@@ -34,7 +55,7 @@ public class Venda extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableSessoes = new javax.swing.JTable();
         jButtonCancelar = new javax.swing.JButton();
         jButtonConfirmar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -57,31 +78,9 @@ public class Venda extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel9.setText("Venda de Ingresso");
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Filme", "Sala", "Horário"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        jTableSessoes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTableSessoes.setModel(ControleSessao.updateTable());
+        jScrollPane1.setViewportView(jTableSessoes);
 
         jButtonCancelar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -93,6 +92,7 @@ public class Venda extends javax.swing.JDialog {
 
         jButtonConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.setEnabled(false);
         jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarActionPerformed(evt);
@@ -102,11 +102,13 @@ public class Venda extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel1.setText("Poltrona:");
 
+        jTextFieldPoltrona.setEditable(false);
         jTextFieldPoltrona.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jTextFieldPoltrona.setEnabled(false);
 
         jButtonPoltrona.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonPoltrona.setText("Selecionar Poltrona");
+        jButtonPoltrona.setEnabled(false);
         jButtonPoltrona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -120,20 +122,36 @@ public class Venda extends javax.swing.JDialog {
         buttonGroupTipo.add(jRadioButtonNP);
         jRadioButtonNP.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButtonNP.setText("Não Pagante");
+        jRadioButtonNP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonNPActionPerformed(evt);
+            }
+        });
 
         jRadioButtonMeia.setBackground(new java.awt.Color(159, 168, 255));
         buttonGroupTipo.add(jRadioButtonMeia);
         jRadioButtonMeia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButtonMeia.setText("Meia");
+        jRadioButtonMeia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMeiaActionPerformed(evt);
+            }
+        });
 
         jRadioButtonInteira.setBackground(new java.awt.Color(159, 168, 255));
         buttonGroupTipo.add(jRadioButtonInteira);
         jRadioButtonInteira.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButtonInteira.setText("Inteira");
+        jRadioButtonInteira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonInteiraActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel3.setText("Valor Total:");
 
+        jFormattedTextFieldValor.setEditable(false);
         jFormattedTextFieldValor.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jLabelGVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
@@ -194,9 +212,9 @@ public class Venda extends javax.swing.JDialog {
                     .addComponent(jLabelGVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jTextFieldPoltrona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,9 +236,7 @@ public class Venda extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -244,7 +260,24 @@ public class Venda extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
+        String tipo = "";
+        
+        for (Enumeration<AbstractButton> buttons = buttonGroupTipo.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
 
+            if (button.isSelected()) {
+                tipo = button.getText();
+            }
+        }
+        
+        String msg = ControleSessao.venda(Integer.toString(codSessao), jTextFieldPoltrona.getText(),
+                                          tipo, jFormattedTextFieldValor.getText());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Venda realizada com sucesso!")){
+            this.dispose();
+        }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jLabelGVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseClicked
@@ -252,10 +285,25 @@ public class Venda extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabelGVoltarMouseClicked
 
     private void jButtonPoltronaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPoltronaActionPerformed
+        rp.setMsg(jTextFieldPoltrona.getText());
         java.awt.Frame parent = (java.awt.Frame) this.getParent();
-        Poltronas dialog = new Poltronas(parent, true);
+        Poltronas dialog = new Poltronas(parent, true, Integer.toString(codSessao), rp);
         dialog.setVisible(true);
+        
+        jTextFieldPoltrona.setText(rp.getMsg());
     }//GEN-LAST:event_jButtonPoltronaActionPerformed
+
+    private void jRadioButtonNPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNPActionPerformed
+        jFormattedTextFieldValor.setText("R$ 00,00");
+    }//GEN-LAST:event_jRadioButtonNPActionPerformed
+
+    private void jRadioButtonMeiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMeiaActionPerformed
+        jFormattedTextFieldValor.setText("R$ 10,00");
+    }//GEN-LAST:event_jRadioButtonMeiaActionPerformed
+
+    private void jRadioButtonInteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonInteiraActionPerformed
+        jFormattedTextFieldValor.setText("R$ 20,00");
+    }//GEN-LAST:event_jRadioButtonInteiraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,7 +364,7 @@ public class Venda extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioButtonNP;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableSessoes;
     private javax.swing.JTextField jTextFieldPoltrona;
     // End of variables declaration//GEN-END:variables
 }

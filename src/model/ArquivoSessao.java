@@ -228,9 +228,9 @@ public class ArquivoSessao extends Arquivo {
                         elemento += sessao.getHora().concat(";");
                         for(int i = 0; i < 50; i++){
                             if(i == 49)
-                                elemento += "0";
+                                elemento += Integer.toString(sessao.getPoltronas()[i]);
                             else
-                                elemento += "0".concat(";");
+                                elemento += Integer.toString(sessao.getPoltronas()[i]).concat(";");
                         }
                         
                         completo += elemento+"\n";

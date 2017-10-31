@@ -8,6 +8,7 @@
 package control;
 
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableModel;
 import model.ArquivoFilme;
 import model.ArquivoSala;
@@ -31,7 +32,6 @@ public class ControleSessao {
      * @return String
      */
     public static String tryCadastro(String codFilme, String numSala, String hora){
-        System.out.println(hora);
         if(codFilme.equals("") || numSala.equals("") || hora.equals("")){
             return "Erro: Complete todas as informações!";
         }else{
@@ -118,7 +118,7 @@ public class ControleSessao {
     }
     
     /**
-     * Este método retorna tabela atualizada de sessões.
+     * Este método é responsável por requisitar uma tabela atualizada de sessões.
      * @return model
      */
     public static DefaultTableModel updateTable(){
@@ -143,6 +143,53 @@ public class ControleSessao {
         }       
         
         return model;
+    }
+    
+    /**
+     * Este método é responsável por requisitar as poltronas de uma sessão.
+     * @param codSessao
+     * @return poltronas
+     */
+    public static int[] getPoltronas(int codSessao){
+        Consulta consulta = new Consulta();
+        int[] poltronas;
+        
+        Sessao sessao = consulta.consultarSessao(codSessao);
+        poltronas = new int[50];
+        
+        System.arraycopy(sessao.getPoltronas(), 0, poltronas, 0, 50);
+        
+        return poltronas;
+    }
+    
+    /**
+     * Este método é responsável por requisitar a venda de um ingresso.
+     * @param codSessao
+     * @param poltrona
+     * @param tipo
+     * @param valor
+     * @return 
+     */
+    public static String venda(String codSessao, String poltrona, String tipo, String valor){
+        if(codSessao.equals("") || poltrona.equals("") || tipo.equals("") ||
+           valor.equals("")){
+            return "Erro: Complete todas as informações!";
+        }else{
+            Consulta consulta = new Consulta();
+            Alteracao alteracao = new Alteracao();
+            
+            Sessao sessao = consulta.consultarSessao(Integer.parseInt(codSessao));
+            
+            int[] poltronas = new int[50];
+            poltronas = sessao.getPoltronas();
+            poltronas[Integer.parseInt(poltrona)-1] = 1;
+            System.out.println(poltronas[Integer.parseInt(poltrona)-1]);
+            sessao.setPoltronas(poltronas);
+            
+            String ret = alteracao.alterar(sessao);
+            
+            return "Venda realizada com sucesso!";
+        }
     }
     
 }

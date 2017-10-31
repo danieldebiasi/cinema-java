@@ -25,7 +25,7 @@ public class Sessao {
         this.sala = sala;
         this.hora = hora;
         for(int i=0; i < poltronas.length; i++){
-            poltronas[i] = 0;
+            this.poltronas[i] = poltronas[i];
         }
     }
     
@@ -43,6 +43,10 @@ public class Sessao {
         for(int i=0; i < poltronas.length; i++){
             poltronas[i] = 0;
         }
+    }
+    
+    public Sessao(int codSessao){
+        this.codSessao = codSessao;
     }
     
     public Sessao(){
