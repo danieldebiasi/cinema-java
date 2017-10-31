@@ -17,7 +17,7 @@ public class Gestor extends Pessoa {
 
     private String numContrato;
     
-    public Gestor(String nome, String rg, String cpf, String endereco, String telefone, String dataNasc, String salario, String numContrato){
+    public Gestor(String rg, String nome, String cpf, String endereco, String telefone, String dataNasc, String salario, String numContrato){
         super(nome, rg, cpf, endereco, telefone, dataNasc, salario);
         this.numContrato = numContrato;
     }

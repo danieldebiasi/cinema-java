@@ -27,51 +27,56 @@ public class Alteracao {
     /**
      * Este método é responsável por requisitar uma alteração ao arquivo de filmes.
      * @param filme 
+     * @return String
      */
-    public void alterar(Filme filme){
+    public String alterar(Filme filme){
         ArquivoFilme arquivo = new ArquivoFilme();
-        
         arquivo.alterar(filme);
+        return "Filme alterado com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma alteração ao arquivo de filmes.
      * @param funcionario 
+     * @return String
      */
-    public void alterar(Funcionario funcionario){
-        ArquivoFuncionario arquivo = new ArquivoFuncionario();
-        
+    public String alterar(Funcionario funcionario){
+        ArquivoFuncionario arquivo = new ArquivoFuncionario();        
         arquivo.alterar(funcionario);
+        return "Funcionário alterado com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma alteração ao arquivo de gestores.
      * @param gestor 
+     * @return String
      */
-    public void alterar(Gestor gestor){
-        ArquivoGestor arquivo = new ArquivoGestor();
-        
+    public String alterar(Gestor gestor){
+        ArquivoGestor arquivo = new ArquivoGestor();        
         arquivo.alterar(gestor);
+        return "Gestor alterado com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma alteração ao arquivo de salas.
      * @param sala 
+     * @return string 
      */
-    public void alterar(Sala sala){
+    public String alterar(Sala sala){
         ArquivoSala arquivo = new ArquivoSala();
-        
         arquivo.alterar(sala);
+        return "Sala alterada com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma alteração ao arquivo de sessões.
      * @param sessao 
+     * @return String
      */
-    public void alterar(Sessao sessao){
+    public String alterar(Sessao sessao){
         ArquivoSessao arquivo = new ArquivoSessao();
-        
         arquivo.alterar(sessao);
+        return "Sessão alterada com sucesso!";
     }
     
 }

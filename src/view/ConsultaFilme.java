@@ -8,6 +8,7 @@ package view;
 
 import control.ControleFilme;
 import control.Resposta;
+import javax.swing.JOptionPane;
 
 /**
  * Esta classe é responsável pela interface de consulta de filmes.
@@ -57,6 +58,7 @@ public class ConsultaFilme extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jTextFieldGenero = new javax.swing.JTextField();
         jLabelVoltar = new javax.swing.JLabel();
+        jButtonAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Filme");
@@ -88,6 +90,11 @@ public class ConsultaFilme extends javax.swing.JDialog {
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.setEnabled(false);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel8.setText("Código:");
@@ -151,6 +158,16 @@ public class ConsultaFilme extends javax.swing.JDialog {
             }
         });
 
+        jButtonAlterar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jButtonAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/aplicar.png"))); // NOI18N
+        jButtonAlterar.setText("Alterar");
+        jButtonAlterar.setEnabled(false);
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,6 +216,8 @@ public class ConsultaFilme extends javax.swing.JDialog {
                         .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelVoltar)))
                 .addContainerGap())
@@ -208,11 +227,14 @@ public class ConsultaFilme extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonPesquisar)
-                        .addComponent(jButtonEditar)
-                        .addComponent(jButtonExcluir))
-                    .addComponent(jLabelVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
+                    .addComponent(jLabelVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonPesquisar)
+                            .addComponent(jButtonEditar)
+                            .addComponent(jButtonExcluir)
+                            .addComponent(jButtonAlterar))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -283,11 +305,12 @@ public class ConsultaFilme extends javax.swing.JDialog {
             jTextAreaSinopse.setText(busca[6]);
             
             jButtonEditar.setEnabled(true);
+            jButtonExcluir.setEnabled(true);
         }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
-        jTextFieldCodigo.setEnabled(true);
+
         jTextFieldTitulo.setEnabled(true);
         jTextFieldGenero.setEnabled(true);
         jTextFieldDiretor.setEnabled(true);
@@ -295,7 +318,33 @@ public class ConsultaFilme extends javax.swing.JDialog {
         jTextFieldDuracao.setEnabled(true);
         jComboBoxClasIndicativa.setEnabled(true);
         jTextAreaSinopse.setEnabled(true);
+        
+        jButtonAlterar.setEnabled(true);
     }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        String msg = ControleFilme.alterar(jTextFieldCodigo.getText(), jTextFieldTitulo.getText(),
+                                   jTextFieldDiretor.getText(), jTextFieldGenero.getText(),
+                                   jTextFieldAno.getText(), jTextFieldDuracao.getText(), 
+                                   jComboBoxClasIndicativa.getSelectedItem(), jTextAreaSinopse.getText());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Filme alterado com sucesso!")){
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Confirmar exclusão do filme?") == JOptionPane.YES_OPTION){
+            String msg = ControleFilme.excluir(jTextFieldCodigo.getText(), jTextFieldTitulo.getText(),
+                                   jTextFieldDiretor.getText(), jTextFieldGenero.getText(),
+                                   jTextFieldAno.getText(), jTextFieldDuracao.getText(), 
+                                   jComboBoxClasIndicativa.getSelectedItem(), jTextAreaSinopse.getText());
+            JOptionPane.showMessageDialog(null, msg);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +389,7 @@ public class ConsultaFilme extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonPesquisar;

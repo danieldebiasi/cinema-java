@@ -7,13 +7,18 @@
 
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -108,30 +113,78 @@ public class ArquivoGestor extends Arquivo {
      */
     public Gestor buscar(String rg){
         Gestor gestor = null;
-        File file = new File(arquivo);
+        FileReader file;
         
-        try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            
-            scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(split[0].equals(rg)){
-                    gestor = new Gestor(split[0], split[1], split[2], split[3], 
-                            split[4], split[5], split[6], split[7]);
-                    
-                    break;
+        if(Files.exists(arquivoPath)){
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        if(split[0].equals(rg)){                    
+                            gestor = new Gestor(split[0], split[1], split[2], split[3],
+                                              split[4], split[5], split[6], split[7]);
+
+                            break;
+                        }
+
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
-            Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return gestor;
+    }
+    
+    /**
+     * Este método é responsável por buscar todos os gestores do arquivo de gestores.
+     * @return filmes
+     */
+    public List<Gestor> getAll(){
+        List<Gestor> gestores = new ArrayList<>();
+        Gestor gestor = null;
+        FileReader file;
+        
+        if(Files.exists(arquivoPath)){
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        gestor = new Gestor(split[0], split[1], split[2], split[3],
+                                          split[4], split[5], split[6], split[7]);
+
+                        gestores.add(gestor);
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+        }
+        
+        return gestores;
     }
     
     /**
@@ -139,98 +192,113 @@ public class ArquivoGestor extends Arquivo {
      * @param gestor 
      */
     public void alterar(Gestor gestor){
-        File file = new File(arquivo);
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
-            
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(split[0].equals(gestor.getRg())){
-                    rset = gestor.getRg().concat(";");
-                    rset += gestor.getNome().concat(";");
-                    rset += gestor.getCpf().concat(";");
-                    rset += gestor.getEndereco().concat(";");
-                    rset += gestor.getTelefone().concat(";");
-                    rset += gestor.getDataNasc().concat(";");
-                    rset += gestor.getSalario().concat(";");
-                    rset += gestor.getNumContrato().concat(";");
-                   
-                    fset += rset;
-                    
-                    try {
-                        FileWriter fwriter = new FileWriter(arquivo);
-                        try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                            writer.write(fset);
-
-                            writer.newLine();
-                            writer.close();
-                        }
-                    } catch (IOException ex) {
-                        Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    break;
-                }
-            }
-            
-        } catch (NumberFormatException e) {
-            Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-    
-    /**
-     * Este método é responsável por excluir o registro de um funcionário.
-     * @param rg 
-     */
-    public void excluir(String rg){
-        File file = new File(arquivo);
-        
-        try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
-            
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(!(split[0]).equals(rg)){
-                    rset = split[0].concat(";");
-                    rset += split[1].concat(";");
-                    rset += split[2].concat(";");
-                    rset += split[3].concat(";");
-                    rset += split[4].concat(";");
-                    rset += split[5].concat(";");
-                    rset += split[6].concat(";");
-                    rset += split[7];
-                    
-                    fset += rset+"\n";
-                }
-            }
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
             try {
-                FileWriter fwriter = new FileWriter(arquivo);
-                try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                    writer.write(fset);
-
-                    writer.newLine();
-                    writer.close();
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    if(split[0].equals(gestor.getRg())){                    
+                        elemento = gestor.getRg().concat(";");
+                        elemento += gestor.getNome().concat(";");
+                        elemento += gestor.getCpf().concat(";");
+                        elemento += gestor.getEndereco().concat(";");
+                        elemento += gestor.getTelefone().concat(";");
+                        elemento += gestor.getDataNasc().concat(";");
+                        elemento += gestor.getSalario().concat(";");
+                        elemento += gestor.getNumContrato();
+                        
+                        completo += elemento+"\n";
+                    }else{
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
     
+    /**
+     * Este método é responsável por excluir o registro de um gestor.
+     * @param gestor 
+     */
+    public void excluir(Gestor gestor){
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
+        
+        try {
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
+            
+            try {
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    if(!(split[0].equals(gestor.getRg()))){
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
+                }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ArquivoGestor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 }

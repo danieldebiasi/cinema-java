@@ -78,9 +78,9 @@ public class ControleFilme {
     public static String[] buscar(int codFilme){
         String[] rset;
         rset = new String[7];
-        ArquivoFilme arquivo = new ArquivoFilme();
+        Consulta consulta = new Consulta();
         
-        Filme filme = arquivo.buscar(codFilme);       
+        Filme filme = consulta.consultarFilme(codFilme);
         
         rset[0] = filme.getTitulo();
         rset[1] = filme.getGenero();
@@ -91,6 +91,53 @@ public class ControleFilme {
         rset[6] = filme.getSinopse();
         
         return rset;
+    }
+    
+    /**
+     * Este método é responsável por requisitar uma alteração de filme.
+     * @param codFilme
+     * @param titulo
+     * @param diretor
+     * @param genero
+     * @param ano
+     * @param duracao
+     * @param clasIndicativa
+     * @param sinopse
+     * @return String
+     */
+    public static String alterar(String codFilme, String titulo, String diretor, String genero, String ano, String duracao, Object clasIndicativa, String sinopse){
+        if(codFilme.equals("") || titulo.equals("") || diretor.equals("") || genero.equals("") || ano.equals("") ||
+           duracao.equals("") || clasIndicativa == null){
+            return "Erro: Complete todas as informações!";
+        }else{
+            Filme filme = new Filme(Integer.parseInt(codFilme), titulo, genero, sinopse, diretor,
+                                    Integer.parseInt(ano), clasIndicativa.toString(),
+                                    Integer.parseInt(duracao));
+            Alteracao alteracao = new Alteracao();
+            
+            return alteracao.alterar(filme);
+        }
+    }
+    
+    /**
+     * Este método é responsável por requisitar a exclusão de um filme.
+     * @param codFilme
+     * @param titulo
+     * @param diretor
+     * @param genero
+     * @param ano
+     * @param duracao
+     * @param clasIndicativa
+     * @param sinopse
+     * @return String
+     */
+    public static String excluir(String codFilme, String titulo, String diretor, String genero, String ano, String duracao, Object clasIndicativa, String sinopse){
+        Filme filme = new Filme(Integer.parseInt(codFilme), titulo, genero, sinopse, diretor,
+                                    Integer.parseInt(ano), clasIndicativa.toString(),
+                                    Integer.parseInt(duracao));
+        Exclusao exclusao = new Exclusao();
+        
+        return exclusao.excluir(filme);
     }
     
 }

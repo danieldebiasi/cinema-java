@@ -116,33 +116,35 @@ public final class ArquivoFilme extends Arquivo {
         Filme filme = null;
         FileReader file;
         
-        try {
-            file = new FileReader(arquivo);
-            BufferedReader reader = new BufferedReader(file);
-            
+        if(Files.exists(arquivoPath)){
             try {
-                reader.readLine();
-                String rset = reader.readLine();
-                
-                while(rset != null){
-                    String[] split = rset.split(";");
-                    
-                    if(Integer.parseInt(split[0]) == codFilme){                    
-                        filme = new Filme(Integer.parseInt(split[0]), split[1], split[2], split[3],
-                                    split[4], Integer.parseInt(split[5]), split[6], Integer.parseInt(split[7]));
-                    
-                        break;
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        if(Integer.parseInt(split[0]) == codFilme){                    
+                            filme = new Filme(Integer.parseInt(split[0]), split[1], split[2], split[3],
+                                        split[4], Integer.parseInt(split[5]), split[6], Integer.parseInt(split[7]));
+
+                            break;
+                        }
+
+                        rset = reader.readLine();
                     }
-                    
-                    rset = reader.readLine();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-            } catch (IOException ex) {
+            } catch (FileNotFoundException ex) {
                 Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+            }       
+        }
         
         return filme;
         
@@ -157,30 +159,32 @@ public final class ArquivoFilme extends Arquivo {
         Filme filme = null;
         FileReader file;
         
-        try {
-            file = new FileReader(arquivo);
-            BufferedReader reader = new BufferedReader(file);
-            
+        if(Files.exists(arquivoPath)){
             try {
-                reader.readLine();
-                String rset = reader.readLine();
-                
-                while(rset != null){
-                    String[] split = rset.split(";");
-                    
-                    filme = new Filme(Integer.parseInt(split[0]), split[1], split[2], split[3],
-                                split[4], Integer.parseInt(split[5]), split[6], Integer.parseInt(split[7]));
-                    
-                    filmes.add(filme);
-                    rset = reader.readLine();
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        filme = new Filme(Integer.parseInt(split[0]), split[1], split[2], split[3],
+                                    split[4], Integer.parseInt(split[5]), split[6], Integer.parseInt(split[7]));
+
+                        filmes.add(filme);
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-            } catch (IOException ex) {
+            } catch (FileNotFoundException ex) {
                 Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+            } 
+        }
         
         return filmes;
     }
@@ -190,93 +194,112 @@ public final class ArquivoFilme extends Arquivo {
      * @param filme 
      */
     public void alterar(Filme filme){
-        File file = new File(arquivo);
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(Integer.parseInt(split[0]) == filme.getCodFilme()){
-                    rset = Integer.toString(filme.getCodFilme()).concat(";");
-                    rset += filme.getTitulo().concat(";");
-                    rset += filme.getGenero().concat(";");
-                    rset += filme.getSinopse().concat(";");
-                    rset += filme.getDiretor().concat(";");
-                    rset += Integer.toString(filme.getAno()).concat(";");
-                    rset += filme.getClasIndicativa().concat(";");
-                    rset += Integer.toString(filme.getDuracao());
-                }
-                
-                fset += rset+"\n";
-            }
-                    
             try {
-                FileWriter fwriter = new FileWriter(arquivo);
-                try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                    writer.write(fset);
-
-                    writer.newLine();
-                    writer.close();
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    if(Integer.parseInt(split[0]) == filme.getCodFilme()){                    
+                        elemento = Integer.toString(filme.getCodFilme()).concat(";");
+                        elemento += filme.getTitulo().concat(";");
+                        elemento += filme.getGenero().concat(";");
+                        elemento += filme.getSinopse().concat(";");
+                        elemento += filme.getDiretor().concat(";");
+                        elemento += Integer.toString(filme.getAno()).concat(";");
+                        elemento += filme.getClasIndicativa().concat(";");
+                        elemento += Integer.toString(filme.getDuracao());
+                        
+                        completo += elemento+"\n";
+                    }else{
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
-            }     
-        } catch (NumberFormatException e) {
-            Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, e);
-        }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
+        }       
     }
     
     /**
      * Este método é responsável por excluir o registro de um filme.
-     * @param codFilme 
+     * @param filme 
      */
-    public void excluir(int codFilme){
-        File file = new File(arquivo);
+    public void excluir(Filme filme){
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
-            
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(!(Integer.parseInt(split[0]) == codFilme)){
-                    rset = split[0].concat(";");
-                    rset += split[1].concat(";");
-                    rset += split[2].concat(";");
-                    rset += split[3].concat(";");
-                    rset += split[4].concat(";");
-                    rset += split[5].concat(";");
-                    rset += split[6].concat(";");
-                    rset += split[7];
-                    
-                    fset += rset+"\n";
-                }
-            }
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
             try {
-                FileWriter fwriter = new FileWriter(arquivo);
-                try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                    writer.write(fset);
-
-                    writer.newLine();
-                    writer.close();
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    if(!(Integer.parseInt(split[0]) == filme.getCodFilme())){
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ArquivoFilme.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

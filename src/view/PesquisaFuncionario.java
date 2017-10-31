@@ -6,18 +6,37 @@
  */
 package view;
 
+import control.ControlePessoa;
+import control.Resposta;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  * Esta classe é responsável pela interface de pesquisa de funcionários.
  * @author Daniel
  */
 public class PesquisaFuncionario extends javax.swing.JDialog {
 
+    private Resposta rp;
+    private String msg;
+    
     /**
      * Creates new form PesquisaFuncionario
      */
-    public PesquisaFuncionario(java.awt.Frame parent, boolean modal) {
+    public PesquisaFuncionario(java.awt.Frame parent, boolean modal, Resposta rp) {
         super(parent, modal);
         initComponents();
+        
+        this.rp = rp;
+        
+        jTableFuncionarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                msg = jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0).toString();
+                
+                jButtonConfirmar.setEnabled(true);                   
+            }
+        });
     }
 
     /**
@@ -34,7 +53,7 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabelVoltar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableFuncionarios = new javax.swing.JTable();
         jButtonCancelar = new javax.swing.JButton();
         jButtonConfirmar = new javax.swing.JButton();
 
@@ -55,31 +74,10 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CPF", "RG", "Nome"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        jTableFuncionarios.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTableFuncionarios.setModel(ControlePessoa.updateTableFuncionarios());
+        jTableFuncionarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jTableFuncionarios);
 
         jButtonCancelar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -91,6 +89,7 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
 
         jButtonConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.setEnabled(false);
         jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarActionPerformed(evt);
@@ -159,7 +158,8 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
-
+        rp.setMsg(msg);
+        this.dispose();
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     /**
@@ -192,7 +192,7 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PesquisaFuncionario dialog = new PesquisaFuncionario(new javax.swing.JFrame(), true);
+                PesquisaFuncionario dialog = new PesquisaFuncionario(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -212,6 +212,6 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableFuncionarios;
     // End of variables declaration//GEN-END:variables
 }

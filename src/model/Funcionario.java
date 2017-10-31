@@ -19,7 +19,7 @@ public class Funcionario extends Pessoa {
     private String horaEntrada;
     private String horaSaida;
     
-    public Funcionario(String nome, String rg, String cpf, String endereco, String telefone, String dataNasc, String salario, String carteiraDeTrabalho, String horaEntrada, String horaSaida){
+    public Funcionario(String rg, String nome, String cpf, String endereco, String telefone, String dataNasc, String salario, String carteiraDeTrabalho, String horaEntrada, String horaSaida){
         super(nome, rg, cpf, endereco, telefone, dataNasc, salario);
         this.carteiraDeTrabalho = carteiraDeTrabalho;
         this.horaEntrada = horaEntrada;

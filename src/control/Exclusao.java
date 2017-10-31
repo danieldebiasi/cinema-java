@@ -28,50 +28,54 @@ public class Exclusao {
      * Este método é responsável por requisitar uma exlusão no arquivo de filmes.
      * @param filme 
      */
-    public void excluir(Filme filme){
-        ArquivoFilme arquivo = new ArquivoFilme();
-        
-        arquivo.excluir(filme.getCodFilme());
+    public String excluir(Filme filme){
+        ArquivoFilme arquivo = new ArquivoFilme();        
+        arquivo.excluir(filme);
+        return "Filme excluído com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma exclusão no arquivo de funcionários.
      * @param funcionario 
+     * @return String
      */
-    public void excluir(Funcionario funcionario){
-        ArquivoFuncionario arquivo = new ArquivoFuncionario();
-        
-        arquivo.excluir(funcionario.getRg());
+    public String excluir(Funcionario funcionario){
+        ArquivoFuncionario arquivo = new ArquivoFuncionario();        
+        arquivo.excluir(funcionario);
+        return "Funcionário excluído com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma exclusão no arquivo de gestores.
      * @param gestor 
+     * @return String
      */
-    public void excluir(Gestor gestor){
-        ArquivoGestor arquivo = new ArquivoGestor();
-        
-        arquivo.excluir(gestor.getRg());
+    public String excluir(Gestor gestor){
+        ArquivoGestor arquivo = new ArquivoGestor();        
+        arquivo.excluir(gestor);
+        return "Gestor excluído com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma exclusão no arquivo de salas.
      * @param sala 
+     * @return String
      */
-    public void exlcuir(Sala sala){
-        ArquivoSala arquivo = new ArquivoSala();
-        
-        arquivo.excluir(sala.getNumSala());
+    public String excluir(Sala sala){
+        ArquivoSala arquivo = new ArquivoSala();        
+        arquivo.excluir(sala);
+        return "Sala excluída com sucesso!";
     }
     
     /**
      * Este método é responsável por requisitar uma exclusão no arquivo de sessões.
      * @param sessao 
+     * @return String
      */
-    public void excluir(Sessao sessao){
-        ArquivoSessao arquivo = new ArquivoSessao();
-        
-        arquivo.excluir(sessao.getCodSessao());
+    public String excluir(Sessao sessao){
+        ArquivoSessao arquivo = new ArquivoSessao();        
+        arquivo.excluir(sessao);        
+        return "Sessão excluída com sucesso!";
     }
     
 }

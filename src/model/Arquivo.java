@@ -40,9 +40,11 @@ abstract class Arquivo {
 
                 try {
                     reader.readLine();
-
-                    while(reader.readLine() != null){
-                        incremento++;
+                    String line = reader.readLine();
+                    while(line != null){
+                        String[] split = line.split(";");
+                        incremento = Integer.parseInt(split[0])+1;
+                        line = reader.readLine();
                     }
 
                     file.close();

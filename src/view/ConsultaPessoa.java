@@ -6,12 +6,18 @@
  */
 package view;
 
+import control.ControlePessoa;
+import control.Resposta;
+import javax.swing.JOptionPane;
+
 /**
  * Esta classe é responsável pela interface de consulta de pessoas.
  * @author Daniel
  */
 public class ConsultaPessoa extends javax.swing.JDialog {
 
+    private final Resposta rp = new Resposta();
+    
     /**
      * Creates new form ConsultaPessoa
      */
@@ -57,6 +63,7 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jLabel19 = new javax.swing.JLabel();
         jTextFieldCarteira = new javax.swing.JTextField();
         jLabelFVoltar = new javax.swing.JLabel();
+        jButtonFAlterar = new javax.swing.JButton();
         jPanelGestor = new javax.swing.JPanel();
         jButtonGPesquisar = new javax.swing.JButton();
         jButtonGEditar = new javax.swing.JButton();
@@ -64,21 +71,22 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jSeparator2 = new javax.swing.JSeparator();
         jLabelGVoltar = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldFNome1 = new javax.swing.JTextField();
+        jTextFieldGNome = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jFormattedTextFieldFCpf1 = new javax.swing.JFormattedTextField();
-        jTextFieldFTelefone1 = new javax.swing.JTextField();
+        jFormattedTextFieldGCpf = new javax.swing.JFormattedTextField();
+        jTextFieldGTelefone = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextFieldFRg1 = new javax.swing.JTextField();
+        jTextFieldGRg = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextFieldFEndereco1 = new javax.swing.JTextField();
+        jTextFieldGEndereco = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jFormattedTextFieldFDataNasc1 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldGDataNasc = new javax.swing.JFormattedTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextFieldFSalario1 = new javax.swing.JTextField();
+        jTextFieldGSalario = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jTextFieldContrato = new javax.swing.JTextField();
+        jButtonGAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Pessoa");
@@ -103,29 +111,44 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jButtonFEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/edit.png"))); // NOI18N
         jButtonFEditar.setText("Editar");
         jButtonFEditar.setEnabled(false);
+        jButtonFEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFEditarActionPerformed(evt);
+            }
+        });
 
         jButtonFExcluir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonFExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jButtonFExcluir.setText("Excluir");
         jButtonFExcluir.setEnabled(false);
+        jButtonFExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel1.setText("Nome:");
 
         jTextFieldFNome.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldFNome.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel3.setText("RG:");
 
         jTextFieldFRg.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldFRg.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel2.setText("CPF:");
+
+        jFormattedTextFieldFCpf.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel4.setText("Endereço:");
 
         jTextFieldFEndereco.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldFEndereco.setEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel5.setText("Telefone:");
@@ -133,35 +156,52 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel6.setText("Data de Nascimento:");
 
+        jFormattedTextFieldFDataNasc.setEnabled(false);
+
         jTextFieldFSalario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldFSalario.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel7.setText("Salário:");
 
         jTextFieldFTelefone.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldFTelefone.setEnabled(false);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel17.setText("Entrada:");
 
         jFormattedTextFieldEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextFieldEntrada.setEnabled(false);
         jFormattedTextFieldEntrada.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel18.setText("Saída:");
 
         jFormattedTextFieldSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextFieldSaida.setEnabled(false);
         jFormattedTextFieldSaida.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel19.setText("Carteira de Trabalho:");
 
         jTextFieldCarteira.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldCarteira.setEnabled(false);
 
         jLabelFVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelFVoltar.setToolTipText("Voltar");
         jLabelFVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelFVoltarMouseClicked(evt);
+            }
+        });
+
+        jButtonFAlterar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jButtonFAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/aplicar.png"))); // NOI18N
+        jButtonFAlterar.setText("Alterar");
+        jButtonFAlterar.setEnabled(false);
+        jButtonFAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFAlterarActionPerformed(evt);
             }
         });
 
@@ -178,6 +218,8 @@ public class ConsultaPessoa extends javax.swing.JDialog {
                         .addComponent(jButtonFEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonFExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonFAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelFVoltar))
                     .addComponent(jSeparator1)
@@ -231,7 +273,8 @@ public class ConsultaPessoa extends javax.swing.JDialog {
                     .addGroup(jPanelFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonFPesquisar)
                         .addComponent(jButtonFEditar)
-                        .addComponent(jButtonFExcluir))
+                        .addComponent(jButtonFExcluir)
+                        .addComponent(jButtonFAlterar))
                     .addComponent(jLabelFVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,11 +326,21 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jButtonGEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/edit.png"))); // NOI18N
         jButtonGEditar.setText("Editar");
         jButtonGEditar.setEnabled(false);
+        jButtonGEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGEditarActionPerformed(evt);
+            }
+        });
 
         jButtonGExcluir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonGExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jButtonGExcluir.setText("Excluir");
         jButtonGExcluir.setEnabled(false);
+        jButtonGExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGExcluirActionPerformed(evt);
+            }
+        });
 
         jLabelGVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelGVoltar.setToolTipText("Voltar");
@@ -300,12 +353,16 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel8.setText("Nome:");
 
-        jTextFieldFNome1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGNome.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGNome.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel9.setText("CPF:");
 
-        jTextFieldFTelefone1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jFormattedTextFieldGCpf.setEnabled(false);
+
+        jTextFieldGTelefone.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGTelefone.setEnabled(false);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel10.setText("Telefone:");
@@ -313,25 +370,41 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel11.setText("RG:");
 
-        jTextFieldFRg1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGRg.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGRg.setEnabled(false);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel12.setText("Endereço:");
 
-        jTextFieldFEndereco1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGEndereco.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGEndereco.setEnabled(false);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel13.setText("Data de Nascimento:");
 
+        jFormattedTextFieldGDataNasc.setEnabled(false);
+
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel14.setText("Salário:");
 
-        jTextFieldFSalario1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGSalario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldGSalario.setEnabled(false);
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel20.setText("Contrato:");
 
         jTextFieldContrato.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextFieldContrato.setEnabled(false);
+
+        jButtonGAlterar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jButtonGAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/aplicar.png"))); // NOI18N
+        jButtonGAlterar.setText("Alterar");
+        jButtonGAlterar.setEnabled(false);
+        jButtonGAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGAlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelGestorLayout = new javax.swing.GroupLayout(jPanelGestor);
         jPanelGestor.setLayout(jPanelGestorLayout);
@@ -346,6 +419,8 @@ public class ConsultaPessoa extends javax.swing.JDialog {
                         .addComponent(jButtonGEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonGExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonGAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelGVoltar))
                     .addComponent(jSeparator2)
@@ -358,27 +433,27 @@ public class ConsultaPessoa extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelGestorLayout.createSequentialGroup()
-                                .addComponent(jTextFieldFNome1)
+                                .addComponent(jTextFieldGNome)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldFRg1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldGRg, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelGestorLayout.createSequentialGroup()
-                                .addComponent(jFormattedTextFieldFCpf1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldGCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldFEndereco1))
+                                .addComponent(jTextFieldGEndereco))
                             .addGroup(jPanelGestorLayout.createSequentialGroup()
-                                .addComponent(jTextFieldFTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldGTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextFieldFDataNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldGDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldFSalario1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                                .addComponent(jTextFieldGSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                             .addComponent(jTextFieldContrato))))
                 .addContainerGap())
         );
@@ -390,30 +465,31 @@ public class ConsultaPessoa extends javax.swing.JDialog {
                     .addGroup(jPanelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonGPesquisar)
                         .addComponent(jButtonGEditar)
-                        .addComponent(jButtonGExcluir))
+                        .addComponent(jButtonGExcluir)
+                        .addComponent(jButtonGAlterar))
                     .addComponent(jLabelGVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextFieldFNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldGNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextFieldFRg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldGRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextFieldFCpf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldGCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel12)
-                    .addComponent(jTextFieldFEndereco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldGEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldGTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel13)
-                    .addComponent(jFormattedTextFieldFDataNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldGDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextFieldFSalario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldGSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,7 +507,7 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPanePessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addComponent(jTabbedPanePessoa)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -451,8 +527,27 @@ public class ConsultaPessoa extends javax.swing.JDialog {
 
     private void jButtonFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFPesquisarActionPerformed
         java.awt.Frame parent = (java.awt.Frame) this.getParent();
-        PesquisaFuncionario dialog = new PesquisaFuncionario(parent, true);
-        dialog.setVisible(true);
+        rp.setMsg(null);
+        PesquisaFuncionario dialog = new PesquisaFuncionario(parent, true, rp);
+        dialog.setVisible(true);       
+        
+        if(rp.getMsg() != null){            
+            String[] busca = ControlePessoa.buscarFuncionario(rp.getMsg());
+
+            jTextFieldFRg.setText(rp.getMsg());
+            jTextFieldFNome.setText(busca[1]);
+            jFormattedTextFieldFCpf.setText(busca[2]);
+            jTextFieldFEndereco.setText(busca[3]);
+            jTextFieldFTelefone.setText(busca[4]);
+            jFormattedTextFieldFDataNasc.setText(busca[5]);
+            jTextFieldFSalario.setText(busca[6]);
+            jTextFieldCarteira.setText(busca[7]);
+            jFormattedTextFieldEntrada.setText(busca[8]);
+            jFormattedTextFieldSaida.setText(busca[9]);
+
+            jButtonFEditar.setEnabled(true);
+            jButtonFExcluir.setEnabled(true);
+        }
     }//GEN-LAST:event_jButtonFPesquisarActionPerformed
 
     private void jLabelFVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFVoltarMouseClicked
@@ -461,13 +556,113 @@ public class ConsultaPessoa extends javax.swing.JDialog {
 
     private void jButtonGPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGPesquisarActionPerformed
         java.awt.Frame parent = (java.awt.Frame) this.getParent();
-        PesquisaGestor dialog = new PesquisaGestor(parent, true);
+        rp.setMsg(null);
+        PesquisaGestor dialog = new PesquisaGestor(parent, true, rp);
         dialog.setVisible(true);
+        
+        if(rp.getMsg() != null){            
+            System.out.println(rp.getMsg());
+            String[] busca = ControlePessoa.buscarGestor(rp.getMsg());
+           
+            jTextFieldGRg.setText(rp.getMsg());
+            System.out.println("teste");
+            jTextFieldGNome.setText(busca[1]);
+            jFormattedTextFieldGCpf.setText(busca[2]);
+            jTextFieldGEndereco.setText(busca[3]);
+            jTextFieldGTelefone.setText(busca[4]);
+            jFormattedTextFieldGDataNasc.setText(busca[5]);
+            jTextFieldGSalario.setText(busca[6]);
+            jTextFieldContrato.setText(busca[7]);
+
+            jButtonGEditar.setEnabled(true);
+            jButtonGExcluir.setEnabled(true);
+        }
+        
     }//GEN-LAST:event_jButtonGPesquisarActionPerformed
 
     private void jLabelGVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabelGVoltarMouseClicked
+
+    private void jButtonFAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFAlterarActionPerformed
+        String msg = ControlePessoa.alterarFuncionario(jTextFieldFRg.getText(), jTextFieldFNome.getText(),
+                                    jFormattedTextFieldFCpf.getText(), jTextFieldFEndereco.getText(),
+                                    jTextFieldFTelefone.getText(), jFormattedTextFieldFDataNasc.getText(), 
+                                    jTextFieldFSalario.getText(), jTextFieldCarteira.getText(),
+                                    jFormattedTextFieldEntrada.getText(), jFormattedTextFieldSaida.getText());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Funcionário alterado com sucesso!")){
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonFAlterarActionPerformed
+
+    private void jButtonGAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGAlterarActionPerformed
+        String msg = ControlePessoa.alterarGestor(jTextFieldGRg.getText(), jTextFieldGNome.getText(),
+                                    jFormattedTextFieldGCpf.getText(), jTextFieldGEndereco.getText(),
+                                    jTextFieldGTelefone.getText(), jFormattedTextFieldGDataNasc.getText(), 
+                                    jTextFieldGSalario.getText(), jTextFieldContrato.getText());
+        
+        JOptionPane.showMessageDialog(null, msg);
+        
+        if(msg.equals("Gestor alterado com sucesso!")){
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonGAlterarActionPerformed
+
+    private void jButtonFEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFEditarActionPerformed
+        jTextFieldFRg.setEnabled(true);
+        jTextFieldFNome.setEnabled(true);
+        jFormattedTextFieldFCpf.setEnabled(true);
+        jTextFieldFEndereco.setEnabled(true);
+        jTextFieldFTelefone.setEnabled(true);
+        jFormattedTextFieldFDataNasc.setEnabled(true);
+        jTextFieldFSalario.setEnabled(true);
+        jTextFieldCarteira.setEnabled(true);
+        jFormattedTextFieldEntrada.setEnabled(true);
+        jFormattedTextFieldSaida.setEnabled(true);
+        
+        jButtonFAlterar.setEnabled(true);
+    }//GEN-LAST:event_jButtonFEditarActionPerformed
+
+    private void jButtonFExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFExcluirActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Confirmar exclusão do funcionário?") == JOptionPane.YES_OPTION){
+            String msg = ControlePessoa.excluirFuncionario(jTextFieldFRg.getText(), jTextFieldFNome.getText(),
+                                   jFormattedTextFieldFCpf.getText(), jTextFieldFEndereco.getText(),
+                                   jTextFieldFTelefone.getText(), jFormattedTextFieldFDataNasc.getText(), 
+                                   jTextFieldFSalario.getText(), jTextFieldCarteira.getText(),
+                                   jFormattedTextFieldEntrada.getText(), jFormattedTextFieldSaida.getText());
+            
+            JOptionPane.showMessageDialog(null, msg);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonFExcluirActionPerformed
+
+    private void jButtonGEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGEditarActionPerformed
+        jTextFieldGRg.setEnabled(true);
+        jTextFieldGNome.setEnabled(true);
+        jFormattedTextFieldGCpf.setEnabled(true);
+        jTextFieldGEndereco.setEnabled(true);
+        jTextFieldGTelefone.setEnabled(true);
+        jFormattedTextFieldGDataNasc.setEnabled(true);
+        jTextFieldGSalario.setEnabled(true);
+        jTextFieldContrato.setEnabled(true);
+        
+        jButtonGAlterar.setEnabled(true);
+    }//GEN-LAST:event_jButtonGEditarActionPerformed
+
+    private void jButtonGExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGExcluirActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Confirmar exclusão do gestor?") == JOptionPane.YES_OPTION){
+            String msg = ControlePessoa.excluirGestor(jTextFieldFRg.getText(), jTextFieldFNome.getText(),
+                                   jFormattedTextFieldFCpf.getText(), jTextFieldFEndereco.getText(),
+                                   jTextFieldFTelefone.getText(), jFormattedTextFieldFDataNasc.getText(), 
+                                   jTextFieldFSalario.getText(), jTextFieldCarteira.getText());
+            
+            JOptionPane.showMessageDialog(null, msg);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonGExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -512,17 +707,19 @@ public class ConsultaPessoa extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonFAlterar;
     private javax.swing.JButton jButtonFEditar;
     private javax.swing.JButton jButtonFExcluir;
     private javax.swing.JButton jButtonFPesquisar;
+    private javax.swing.JButton jButtonGAlterar;
     private javax.swing.JButton jButtonGEditar;
     private javax.swing.JButton jButtonGExcluir;
     private javax.swing.JButton jButtonGPesquisar;
     private javax.swing.JFormattedTextField jFormattedTextFieldEntrada;
     private javax.swing.JFormattedTextField jFormattedTextFieldFCpf;
-    private javax.swing.JFormattedTextField jFormattedTextFieldFCpf1;
     private javax.swing.JFormattedTextField jFormattedTextFieldFDataNasc;
-    private javax.swing.JFormattedTextField jFormattedTextFieldFDataNasc1;
+    private javax.swing.JFormattedTextField jFormattedTextFieldGCpf;
+    private javax.swing.JFormattedTextField jFormattedTextFieldGDataNasc;
     private javax.swing.JFormattedTextField jFormattedTextFieldSaida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -553,14 +750,14 @@ public class ConsultaPessoa extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldCarteira;
     private javax.swing.JTextField jTextFieldContrato;
     private javax.swing.JTextField jTextFieldFEndereco;
-    private javax.swing.JTextField jTextFieldFEndereco1;
     private javax.swing.JTextField jTextFieldFNome;
-    private javax.swing.JTextField jTextFieldFNome1;
     private javax.swing.JTextField jTextFieldFRg;
-    private javax.swing.JTextField jTextFieldFRg1;
     private javax.swing.JTextField jTextFieldFSalario;
-    private javax.swing.JTextField jTextFieldFSalario1;
     private javax.swing.JTextField jTextFieldFTelefone;
-    private javax.swing.JTextField jTextFieldFTelefone1;
+    private javax.swing.JTextField jTextFieldGEndereco;
+    private javax.swing.JTextField jTextFieldGNome;
+    private javax.swing.JTextField jTextFieldGRg;
+    private javax.swing.JTextField jTextFieldGSalario;
+    private javax.swing.JTextField jTextFieldGTelefone;
     // End of variables declaration//GEN-END:variables
 }

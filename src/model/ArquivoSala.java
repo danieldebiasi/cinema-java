@@ -160,86 +160,107 @@ public class ArquivoSala extends Arquivo {
      * @param sala 
      */
     public void alterar(Sala sala){
-        File file = new File(arquivo);
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
+            try {
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
                 
-                if(split[0].equals(sala.getNumSala())){
-                    rset = Integer.toString(sala.getNumSala()).concat(";");
-                    rset += sala.getStatus();
-                   
-                    fset += rset;
+                while(rset != null){
+                    String[] split = rset.split(";");
                     
-                    try {
-                        FileWriter fwriter = new FileWriter(arquivo);
-                        try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                            writer.write(fset);
-
-                            writer.newLine();
-                            writer.close();
-                        }
-                    } catch (IOException ex) {
-                        Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
+                    if(Integer.parseInt(split[0]) == sala.getNumSala()){                    
+                        elemento = Integer.toString(sala.getNumSala()).concat(";");
+                        elemento += sala.getStatus().concat(";");
+                        
+                        completo += elemento+"\n";
+                    }else{
+                        completo += rset+"\n";
                     }
                     
-                    break;
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        } catch (NumberFormatException e) {
-            Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, e);
-        }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     
     /**
      * Este método é responsável por excluir o registro de uma sala.
-     * @param numSala 
+     * @param sala 
      */
-    public void excluir(int numSala){
-        File file = new File(arquivo);
+    public void excluir(Sala sala){
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
-            
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(!(Integer.parseInt(split[0]) == numSala)){
-                    rset = split[0].concat(";");
-                    rset += split[1];
-                    
-                    fset += rset+"\n";
-                }
-            }
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
             try {
-                FileWriter fwriter = new FileWriter(arquivo);
-                try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                    writer.write(fset);
-
-                    writer.newLine();
-                    writer.close();
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    if(!(Integer.parseInt(split[0]) == sala.getNumSala())){
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ArquivoSala.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

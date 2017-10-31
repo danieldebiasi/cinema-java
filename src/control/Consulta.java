@@ -26,35 +26,35 @@ public class Consulta {
 
     /**
      * Este método é responsável por requisitar uma busca ao arquivo de filmes.
-     * @param filme
+     * @param codFilme
      * @return filme
      */
-    public Filme consultar(Filme filme){
+    public Filme consultarFilme(int codFilme){
         ArquivoFilme arquivo = new ArquivoFilme();
         
-        return arquivo.buscar(filme.getCodFilme());        
+        return arquivo.buscar(codFilme);        
     }
     
     /**
      * Este método é responsável por requisitar uma busca ao arquivo de funcionários.
-     * @param funcionario
+     * @param rg
      * @return funcionario
      */
-    public Funcionario consultar(Funcionario funcionario){
+    public Funcionario consultarFuncionario(String rg){
         ArquivoFuncionario arquivo = new ArquivoFuncionario();
         
-        return arquivo.buscar(funcionario.getRg());
+        return arquivo.buscar(rg);
     }
     
     /**
      * Este método é responsável por requisitar uma busca ao arquivo de gestores.
-     * @param gestor
+     * @param rg
      * @return gestor
      */
-    public Gestor consultar(Gestor gestor){
+    public Gestor consultarGestor(String rg){
         ArquivoGestor arquivo = new ArquivoGestor();
         
-        return arquivo.buscar(gestor.getRg());
+        return arquivo.buscar(rg);
     }
     
     /**
@@ -62,20 +62,20 @@ public class Consulta {
      * @param sala
      * @return sala
      */
-    public Sala consultar(Sala sala){
+    public Sala consultarSala(int numSala){
         ArquivoSala arquivo = new ArquivoSala();
         
-        return arquivo.buscar(sala.getNumSala());
+        return arquivo.buscar(numSala);
     }
     
     /**
      * Este método é responsável por requisitar uma busca ao arquivo de sessões.
-     * @param sessao
+     * @param codSessao
      * @return sessao
      */
-    public Sessao consultar(Sessao sessao){
+    public Sessao consultarSessao(int codSessao){
         ArquivoSessao arquivo = new ArquivoSessao();
         
-        return arquivo.buscar(sessao.getCodSessao());
+        return arquivo.buscar(codSessao);
     }
 }

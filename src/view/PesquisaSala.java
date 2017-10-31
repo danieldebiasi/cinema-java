@@ -6,18 +6,38 @@
  */
 package view;
 
+import control.Resposta;
+import control.ControleSala;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  * Esta classe é responsável pela interface de pesquisa de salas.
  * @author Daniel
  */
 public class PesquisaSala extends javax.swing.JDialog {
 
+    private Resposta rp;
+    private String msg;
+    
     /**
      * Creates new form PesquisaSala
      */
-    public PesquisaSala(java.awt.Frame parent, boolean modal) {
+    public PesquisaSala(java.awt.Frame parent, boolean modal, Resposta rp) {
         super(parent, modal);
         initComponents();
+        
+        this.rp = rp;
+        
+        jTableSalas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                msg = jTableSalas.getValueAt(jTableSalas.getSelectedRow(), 0).toString();
+                
+                jButtonConfirmar.setEnabled(true);                   
+            }
+        });
+        
     }
 
     /**
@@ -33,7 +53,7 @@ public class PesquisaSala extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableSalas = new javax.swing.JTable();
         jButtonConfirmar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jLabelVoltar = new javax.swing.JLabel();
@@ -47,34 +67,14 @@ public class PesquisaSala extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("Pesquisar Sala");
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Número", "Condição de Uso"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        jTableSalas.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTableSalas.setModel(ControleSala.updateTable());
+        jTableSalas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jTableSalas);
 
         jButtonConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.setEnabled(false);
         jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarActionPerformed(evt);
@@ -151,7 +151,8 @@ public class PesquisaSala extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
-
+        rp.setMsg(msg);
+        this.dispose();
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -192,7 +193,7 @@ public class PesquisaSala extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PesquisaSala dialog = new PesquisaSala(new javax.swing.JFrame(), true);
+                PesquisaSala dialog = new PesquisaSala(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -212,6 +213,6 @@ public class PesquisaSala extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableSalas;
     // End of variables declaration//GEN-END:variables
 }

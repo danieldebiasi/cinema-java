@@ -7,13 +7,18 @@
 
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -117,30 +122,78 @@ public class ArquivoFuncionario extends Arquivo {
      */
     public Funcionario buscar(String rg){
         Funcionario funcionario = null;
-        File file = new File(arquivo);
+        FileReader file;
         
-        try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            
-            scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(split[0].equals(rg)){
-                    funcionario = new Funcionario(split[0], split[1], split[2], split[3], 
-                            split[4], split[5], split[6], split[7], split[8], split[9]);
-                    
-                    break;
+        if(Files.exists(arquivoPath)){
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        if(split[0].equals(rg)){                    
+                            funcionario = new Funcionario(split[0], split[1], split[2], split[3],
+                                              split[4], split[5], split[6], split[7], split[8], split[9]);
+
+                            break;
+                        }
+
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
-            Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return funcionario;
+    }
+    
+    /**
+     * Este método é responsável por buscar todos os funcionários do arquivo de funcionários.
+     * @return filmes
+     */
+    public List<Funcionario> getAll(){
+        List<Funcionario> funcionarios = new ArrayList<>();
+        Funcionario funcionario = null;
+        FileReader file;
+        
+        if(Files.exists(arquivoPath)){
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        funcionario = new Funcionario(split[0], split[1], split[2], split[3],
+                                          split[4], split[5], split[6], split[7], split[8], split[9]);
+
+                        funcionarios.add(funcionario);
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+        }
+        
+        return funcionarios;
     }
     
     /**
@@ -148,100 +201,114 @@ public class ArquivoFuncionario extends Arquivo {
      * @param funcionario 
      */
     public void alterar(Funcionario funcionario){
-        File file = new File(arquivo);
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
+            try {
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
                 
-                if(split[0].equals(funcionario.getRg())){
-                    rset = funcionario.getRg().concat(";");
-                    rset += funcionario.getNome().concat(";");
-                    rset += funcionario.getCpf().concat(";");
-                    rset += funcionario.getEndereco().concat(";");
-                    rset += funcionario.getTelefone().concat(";");
-                    rset += funcionario.getDataNasc().concat(";");
-                    rset += funcionario.getSalario().concat(";");
-                    rset += funcionario.getCarteiraDeTrabalho().concat(";");
-                    rset += funcionario.getHoraEntrada().concat(";");
-                    rset += funcionario.getHoraSaida();
+                while(rset != null){
+                    String[] split = rset.split(";");
                     
-                    fset += rset;
-                    
-                    try {
-                        FileWriter fwriter = new FileWriter(arquivo);
-                        try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                            writer.write(fset);
-
-                            writer.newLine();
-                            writer.close();
-                        }
-                    } catch (IOException ex) {
-                        Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+                    if(split[0].equals(funcionario.getRg())){                    
+                        elemento = funcionario.getRg().concat(";");
+                        elemento += funcionario.getNome().concat(";");
+                        elemento += funcionario.getCpf().concat(";");
+                        elemento += funcionario.getEndereco().concat(";");
+                        elemento += funcionario.getTelefone().concat(";");
+                        elemento += funcionario.getDataNasc().concat(";");
+                        elemento += funcionario.getSalario().concat(";");
+                        elemento += funcionario.getCarteiraDeTrabalho().concat(";");
+                        elemento += funcionario.getHoraEntrada().concat(";");
+                        elemento += funcionario.getHoraSaida();
+                        
+                        completo += elemento+"\n";
+                    }else{
+                        completo += rset+"\n";
                     }
                     
-                    break;
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        } catch (NumberFormatException e) {
-            Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, e);
-        }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }       
     }
     
     /**
      * Este método é responsável por excluir o registro de um funcionário.
      * @param rg 
      */
-    public void excluir(String rg){
-        File file = new File(arquivo);
+    public void excluir(Funcionario funcionario){
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
-            
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(!(split[0]).equals(rg)){
-                    rset = split[0].concat(";");
-                    rset += split[1].concat(";");
-                    rset += split[2].concat(";");
-                    rset += split[3].concat(";");
-                    rset += split[4].concat(";");
-                    rset += split[5].concat(";");
-                    rset += split[6].concat(";");
-                    rset += split[7].concat(";");
-                    rset += split[8].concat(";");
-                    rset += split[9];
-                    
-                    fset += rset+"\n";
-                }
-            }
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
             try {
-                FileWriter fwriter = new FileWriter(arquivo);
-                try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                    writer.write(fset);
-
-                    writer.newLine();
-                    writer.close();
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    if(!(split[0].equals(funcionario.getRg()))){
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ArquivoFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

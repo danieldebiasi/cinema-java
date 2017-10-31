@@ -29,6 +29,13 @@ public class Sessao {
         }
     }
     
+    public Sessao(int codSessao, Filme filme, Sala sala, String hora){
+        this.codSessao = codSessao;
+        this.filme = filme;
+        this.sala = sala;
+        this.hora = hora;
+    }
+    
     public Sessao(Filme filme, Sala sala, String hora){
         this.filme = filme;
         this.sala = sala;

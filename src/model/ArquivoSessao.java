@@ -7,13 +7,18 @@
 
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -102,41 +107,98 @@ public class ArquivoSessao extends Arquivo {
      */
     public Sessao buscar(int codSessao){
         Sessao sessao = null;
-        File file = new File(arquivo);
+        FileReader file;
         
-        try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            
-            scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-                
-                if(split[0].equals(codSessao)){
-                    ArquivoFilme arqfilme = new ArquivoFilme();
-                    ArquivoSala arqsala = new ArquivoSala();
-                    
-                    Filme filme = arqfilme.buscar(Integer.parseInt(split[1]));
-                    Sala sala = arqsala.buscar(Integer.parseInt(split[2]));
-                    
-                    int[] poltronas = new int[50];
-                    for(int i = 0; i < 50; i++){
-                        poltronas[i] = Integer.parseInt(split[i+5]);
+        if(Files.exists(arquivoPath)){
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+
+                        if(Integer.parseInt(split[0]) == codSessao){  
+                            ArquivoFilme arqfilme = new ArquivoFilme();
+                            ArquivoSala arqsala = new ArquivoSala();
+                            
+                            Filme filme = arqfilme.buscar(Integer.parseInt(split[1]));
+                            Sala sala = arqsala.buscar(Integer.parseInt(split[2]));
+                            
+                            int[] poltronas = new int[50];
+                            for(int i = 0; i < 50; i++){
+                                poltronas[i] = Integer.parseInt(split[i+4]);
+                            }
+                            
+                            sessao = new Sessao(Integer.parseInt(split[0]), filme, sala,
+                                                split[3], poltronas);
+
+                            break;
+                        }
+
+                        rset = reader.readLine();
                     }
-                    
-                    sessao = new Sessao(Integer.parseInt(split[0]), filme, sala, 
-                            split[3], poltronas);
-                    
-                    break;
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-        } catch (NumberFormatException ex) {
-            Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+            }       
         }
         
         return sessao;
+    }
+    
+    /**
+     * Este método é responsável por buscar todas as sessões no arquivo de sessões.
+     * @return sessoes
+     */
+    public List<Sessao> getAll(){
+        List<Sessao> sessoes = new ArrayList<>();
+        Sessao sessao = null;
+        FileReader file;
+        
+        if(Files.exists(arquivoPath)){
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+                        ArquivoFilme arqfilme = new ArquivoFilme();
+                        ArquivoSala arqsala = new ArquivoSala();
+                    
+                        Filme filme = arqfilme.buscar(Integer.parseInt(split[1]));
+                        Sala sala = arqsala.buscar(Integer.parseInt(split[2]));
+                        
+                        int[] poltronas = new int[50];
+                        for(int i = 0; i < 50; i++){
+                            poltronas[i] = Integer.parseInt(split[i+4]);
+                        }
+                        
+                        sessao = new Sessao(Integer.parseInt(split[0]), filme, sala, split[3], poltronas);
+
+                        sessoes.add(sessao);
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        
+        return sessoes;
     }
     
     /**
@@ -144,96 +206,114 @@ public class ArquivoSessao extends Arquivo {
      * @param sessao 
      */
     public void alterar(Sessao sessao){
-        File file = new File(arquivo);
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
         
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
             
-            fset += scanner.nextLine();
-            
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
+            try {
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
                 
-                if(split[0].equals(sessao.getCodSessao())){
-                    rset = Integer.toString(sessao.getCodSessao()).concat(";");
-                    rset += Integer.toString(sessao.getFilme().getCodFilme()).concat(";");
-                    rset += Integer.toString(sessao.getSala().getNumSala()).concat(";");
-                    rset += sessao.getHora().concat(";");
-                    for(int i = 0; i < 50; i++){
-                        rset += Integer.toString(sessao.getPoltronas()[i]);
-                        if(i != 49) rset+=";";
-                    }
-                   
-                    fset += rset;
+                while(rset != null){
+                    String[] split = rset.split(";");
                     
-                    try {
-                        FileWriter fwriter = new FileWriter(arquivo);
-                        try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                            writer.write(fset);
+                    if(Integer.parseInt(split[0]) == sessao.getCodSessao()){                    
+                        elemento = Integer.toString(sessao.getCodSessao()).concat(";");
+                        elemento += Integer.toString(sessao.getFilme().getCodFilme()).concat(";");
+                        elemento += Integer.toString(sessao.getSala().getNumSala()).concat(";");
+                        elemento += sessao.getHora().concat(";");
+                        for(int i = 0; i < 50; i++){
+                            if(i == 49)
+                                elemento += "0";
+                            else
+                                elemento += "0".concat(";");
+                        }
+                        
+                        completo += elemento+"\n";
+                    }else{
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
+                }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
 
                             writer.newLine();
-                            writer.close();
                         }
-                    } catch (IOException ex) {
-                        Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+
+                        writer.close();
                     }
-                    
-                    break;
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        } catch (NumberFormatException e) {
-            Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, e);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     /**
      * Este método é responsável por excluir o registro de uma sessão.
-     * @param codSessao 
+     * @param sessao 
      */
-    public void excluir(int codSessao){
-        File file = new File(arquivo);
-
+    public void excluir(Sessao sessao){
+        String completo = "";
+        String elemento = "";
+        FileReader file;        
+        
         try {
-            Scanner scanner = new Scanner(arquivo);
-            String rset = null;
-            String fset = "";
-
-            fset += scanner.nextLine();
-
-            while(scanner.hasNext()){
-                rset = scanner.nextLine();
-                String[] split = rset.split(";");
-
-                if(!(Integer.parseInt(split[0]) == codSessao)){
-                    rset = split[0].concat(";");
-                    rset += split[1].concat(";");
-                    rset += split[2].concat(";");
-                    rset += split[3].concat(";");
-                    for(int i = 0; i < 50; i++){
-                        rset += split[i+4];
-                        if(i != 49) rset += (";");
-                    }
-
-                    fset += rset+"\n";
-                }
-            }
-
+            file = new FileReader(arquivo);
+            BufferedReader reader = new BufferedReader(file);
+            
             try {
-                FileWriter fwriter = new FileWriter(arquivo);
-                try (BufferedWriter writer = new BufferedWriter(fwriter)) {
-                    writer.write(fset);
-
-                    writer.newLine();
-                    writer.close();
+                completo = reader.readLine()+"\n";
+                String rset = reader.readLine();
+                
+                while(rset != null){
+                    String[] split = rset.split(";");
+                    
+                    if(!(Integer.parseInt(split[0]) == sessao.getCodSessao())){
+                        completo += rset+"\n";
+                    }
+                    
+                    rset = reader.readLine();
                 }
+                
+                try {
+                    FileWriter fwriter = new FileWriter(arquivo);
+                    try (BufferedWriter writer = new BufferedWriter(fwriter)) {
+                        String[] all = completo.split("\n");
+                        
+                        for(int i = 0; i < all.length; i++){
+                            writer.write(all[i]);
+
+                            writer.newLine();
+                        }
+
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (NumberFormatException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

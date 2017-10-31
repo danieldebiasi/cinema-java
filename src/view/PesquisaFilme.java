@@ -69,6 +69,7 @@ public class PesquisaFilme extends javax.swing.JDialog {
 
         jTableFilmes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jTableFilmes.setModel(ControleFilme.updateTable());
+        jTableFilmes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTableFilmes);
 
         jButtonConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
