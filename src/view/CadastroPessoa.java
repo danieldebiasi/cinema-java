@@ -159,14 +159,18 @@ public class CadastroPessoa extends javax.swing.JDialog {
             }
         });
 
-        jFormattedTextFieldEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        try {
+            jFormattedTextFieldEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFormattedTextFieldEntrada.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jLabelFVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelFVoltar.setToolTipText("Voltar");
         jLabelFVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelFVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelFVoltarMouseReleased(evt);
             }
         });
 
@@ -338,8 +342,8 @@ public class CadastroPessoa extends javax.swing.JDialog {
         jLabelGVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelGVoltar.setToolTipText("Voltar");
         jLabelGVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelGVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelGVoltarMouseReleased(evt);
             }
         });
 
@@ -499,13 +503,13 @@ public class CadastroPessoa extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButtonGCancelarActionPerformed
 
-    private void jLabelFVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFVoltarMouseClicked
+    private void jLabelFVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFVoltarMouseReleased
         this.dispose();
-    }//GEN-LAST:event_jLabelFVoltarMouseClicked
+    }//GEN-LAST:event_jLabelFVoltarMouseReleased
 
-    private void jLabelGVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseClicked
+    private void jLabelGVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseReleased
         this.dispose();
-    }//GEN-LAST:event_jLabelGVoltarMouseClicked
+    }//GEN-LAST:event_jLabelGVoltarMouseReleased
 
     /**
      * @param args the command line arguments

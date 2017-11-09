@@ -36,7 +36,6 @@ public class ControlePessoa {
      * @param entrada
      * @param saida
      * @param carteira
-     * @param sinopse
      * @return String
      */
     public static String tryCadastroFuncionario(String nome, String rg, String cpf, String endereco, 

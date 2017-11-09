@@ -121,6 +121,10 @@ public class ArquivoSala extends Arquivo {
         return sala;
     }
     
+    /**
+     * Este método é responsável por retornar todas as salas no arquivo de salas.
+     * @return salas
+     */
     public List<Sala> getAll(){
         List<Sala> salas = new ArrayList<>();
         Sala sala = null;

@@ -7,6 +7,7 @@
 package view;
 
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  * Esta classe é responsável pela interface da tela principal.
@@ -268,7 +269,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
-        System.exit(0);
+        if(JOptionPane.showConfirmDialog(null, "Encerrar o sistema?") == JOptionPane.YES_OPTION)
+            System.exit(0);
     }//GEN-LAST:event_jMenuSairMouseClicked
 
     private void jMenuItemCadFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadFilmesActionPerformed
@@ -317,7 +319,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemNovaVendaActionPerformed
 
     private void jLabelSairMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSairMouseReleased
-        System.exit(0);
+        if(JOptionPane.showConfirmDialog(null, "Encerrar o sistema?") == JOptionPane.YES_OPTION)
+            System.exit(0);
     }//GEN-LAST:event_jLabelSairMouseReleased
 
     private void jLabelAjudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAjudaMouseReleased

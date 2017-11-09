@@ -30,6 +30,13 @@ public class Venda extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        jTableSessoes.getColumnModel().getColumn(0).setPreferredWidth(110);
+        jTableSessoes.getColumnModel().getColumn(0).setMaxWidth(100);
+        jTableSessoes.getColumnModel().getColumn(2).setPreferredWidth(70);
+        jTableSessoes.getColumnModel().getColumn(2).setMaxWidth(100);
+        jTableSessoes.getColumnModel().getColumn(3).setPreferredWidth(70);
+        jTableSessoes.getColumnModel().getColumn(3).setMaxWidth(100);
+        
         jTableSessoes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
@@ -157,8 +164,8 @@ public class Venda extends javax.swing.JDialog {
         jLabelGVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelGVoltar.setToolTipText("Voltar");
         jLabelGVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelGVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelGVoltarMouseReleased(evt);
             }
         });
 
@@ -280,10 +287,6 @@ public class Venda extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
-    private void jLabelGVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabelGVoltarMouseClicked
-
     private void jButtonPoltronaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPoltronaActionPerformed
         rp.setMsg(jTextFieldPoltrona.getText());
         java.awt.Frame parent = (java.awt.Frame) this.getParent();
@@ -304,6 +307,10 @@ public class Venda extends javax.swing.JDialog {
     private void jRadioButtonInteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonInteiraActionPerformed
         jFormattedTextFieldValor.setText("R$ 20,00");
     }//GEN-LAST:event_jRadioButtonInteiraActionPerformed
+
+    private void jLabelGVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelGVoltarMouseReleased
 
     /**
      * @param args the command line arguments

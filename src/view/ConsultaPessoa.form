@@ -417,7 +417,7 @@
                     <Property name="toolTipText" type="java.lang.String" value="Voltar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelFVoltarMouseClicked"/>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelFVoltarMouseReleased"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonFAlterar">
@@ -614,7 +614,7 @@
                     <Property name="toolTipText" type="java.lang.String" value="Voltar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelGVoltarMouseClicked"/>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelGVoltarMouseReleased"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">

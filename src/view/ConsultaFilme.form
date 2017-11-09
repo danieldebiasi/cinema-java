@@ -379,6 +379,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelVoltarMouseClicked"/>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelVoltarMouseReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAlterar">

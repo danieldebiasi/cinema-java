@@ -7,6 +7,7 @@
 package view;
 
 import control.ControleFilme;
+import control.ControleSessao;
 import control.Resposta;
 import javax.swing.JOptionPane;
 
@@ -155,6 +156,9 @@ public class ConsultaFilme extends javax.swing.JDialog {
         jLabelVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelVoltarMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelVoltarMouseReleased(evt);
             }
         });
 
@@ -323,28 +327,41 @@ public class ConsultaFilme extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        String msg = ControleFilme.alterar(jTextFieldCodigo.getText(), jTextFieldTitulo.getText(),
+        String msg = "";
+        
+        msg = ControleFilme.alterar(jTextFieldCodigo.getText(), jTextFieldTitulo.getText(),
                                    jTextFieldDiretor.getText(), jTextFieldGenero.getText(),
                                    jTextFieldAno.getText(), jTextFieldDuracao.getText(), 
                                    jComboBoxClasIndicativa.getSelectedItem(), jTextAreaSinopse.getText());
         
         JOptionPane.showMessageDialog(null, msg);
         
-        if(msg.equals("Filme alterado com sucesso!")){
+        if(!msg.equals("Erro: Complete todas as informações!")){
             this.dispose();
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Confirmar exclusão do filme?") == JOptionPane.YES_OPTION){
-            String msg = ControleFilme.excluir(jTextFieldCodigo.getText(), jTextFieldTitulo.getText(),
-                                   jTextFieldDiretor.getText(), jTextFieldGenero.getText(),
-                                   jTextFieldAno.getText(), jTextFieldDuracao.getText(), 
-                                   jComboBoxClasIndicativa.getSelectedItem(), jTextAreaSinopse.getText());
-            JOptionPane.showMessageDialog(null, msg);
-            this.dispose();
+        String msg = "";
+        
+        if(!ControleSessao.isFilmeEmExibicao(jTextFieldCodigo.getText())){
+            if(JOptionPane.showConfirmDialog(null, "Confirmar exclusão do filme?") == JOptionPane.YES_OPTION){
+                msg = ControleFilme.excluir(jTextFieldCodigo.getText(), jTextFieldTitulo.getText(),
+                                       jTextFieldDiretor.getText(), jTextFieldGenero.getText(),
+                                       jTextFieldAno.getText(), jTextFieldDuracao.getText(), 
+                                       jComboBoxClasIndicativa.getSelectedItem(), jTextAreaSinopse.getText());
+            }
+        }else{
+            msg = "Erro: Filme em exibição em uma ou mais sessões!\nAltere as sessões para excluir o filme.";
         }
+        
+        JOptionPane.showMessageDialog(null, msg);
+        this.dispose();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jLabelVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelVoltarMouseReleased
 
     /**
      * @param args the command line arguments

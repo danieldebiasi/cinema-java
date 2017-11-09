@@ -190,8 +190,8 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jLabelFVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelFVoltar.setToolTipText("Voltar");
         jLabelFVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelFVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelFVoltarMouseReleased(evt);
             }
         });
 
@@ -345,8 +345,8 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jLabelGVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelGVoltar.setToolTipText("Voltar");
         jLabelGVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelGVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelGVoltarMouseReleased(evt);
             }
         });
 
@@ -550,10 +550,6 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonFPesquisarActionPerformed
 
-    private void jLabelFVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabelFVoltarMouseClicked
-
     private void jButtonGPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGPesquisarActionPerformed
         java.awt.Frame parent = (java.awt.Frame) this.getParent();
         rp.setMsg(null);
@@ -579,10 +575,6 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_jButtonGPesquisarActionPerformed
-
-    private void jLabelGVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabelGVoltarMouseClicked
 
     private void jButtonFAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFAlterarActionPerformed
         String msg = ControlePessoa.alterarFuncionario(jTextFieldFRg.getText(), jTextFieldFNome.getText(),
@@ -663,6 +655,14 @@ public class ConsultaPessoa extends javax.swing.JDialog {
             this.dispose();
         }
     }//GEN-LAST:event_jButtonGExcluirActionPerformed
+
+    private void jLabelFVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelFVoltarMouseReleased
+
+    private void jLabelGVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelGVoltarMouseReleased
 
     /**
      * @param args the command line arguments

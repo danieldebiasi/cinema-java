@@ -77,6 +77,38 @@ public class ControleSessao {
         return rset;
     }
     
+    /**
+     * Este método é responsável por requisitar uma consulta para verificar se uma
+     * sala está em utilização por alguma sessão.
+     * @param numSala
+     * @return boolean
+     */
+    public static boolean isSalaOcupada(int numSala){
+        Consulta consulta = new Consulta();
+        
+        return consulta.isSalaOcupada(numSala);
+    }
+    
+    /**
+     * Este método é responsável por requisitar uma consulta para verificar se um´
+     * filme está em exibição.
+     * @param codFilme
+     * @return boolean
+     */
+    public static boolean isFilmeEmExibicao(String codFilme){
+        Consulta consulta = new Consulta();
+        
+        return consulta.isFilmeEmExibicao(Integer.parseInt(codFilme));
+    } 
+    
+    /**
+     * Este método é responsável por requisitar uma alteração em determinada sessão.
+     * @param codSessao
+     * @param codFilme
+     * @param numSala
+     * @param hora
+     * @return 
+     */
     public static String alterar(String codSessao, String codFilme, String numSala, String hora){
         if(codSessao.equals("") || codFilme.equals("") || numSala.equals("") || hora.equals("")){
             return "Erro: Complete todas as informações!";

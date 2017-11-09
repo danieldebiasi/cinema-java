@@ -78,4 +78,28 @@ public class Consulta {
         
         return arquivo.buscar(codSessao);
     }
+    
+    /**
+     * Este método é responsável por requisitar uma verificação no arquivo de sessões
+     * se determinada sala está sendo utilizada.
+     * @param codSessao
+     * @return 
+     */
+    public boolean isSalaOcupada(int codSala){
+        ArquivoSessao arquivo = new ArquivoSessao();
+        
+        return !arquivo.getAllBySala(codSala).isEmpty();
+    }
+    
+    /**
+     * Este método é responsável por requisitar uma verificação no arquivo de sessões
+     * se determinado filme está em exibição.
+     * @param codFilme
+     * @return 
+     */
+    public boolean isFilmeEmExibicao(int codFilme){
+        ArquivoSessao arquivo = new ArquivoSessao();
+        
+        return !arquivo.getAllByFilme(codFilme).isEmpty();
+    }
 }

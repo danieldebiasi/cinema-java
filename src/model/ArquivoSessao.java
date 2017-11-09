@@ -9,7 +9,6 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -19,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -202,6 +200,110 @@ public class ArquivoSessao extends Arquivo {
     }
     
     /**
+     * Este método é responsável por buscar todas as sessões em uma determinada sala
+     * no arquivo de sessões.
+     * @param numSala
+     * @return sessoes
+     */
+    public List<Sessao> getAllBySala(int numSala){
+        List<Sessao> sessoes = new ArrayList<>();
+        Sessao sessao = null;
+        FileReader file;
+        
+        if(Files.exists(arquivoPath)){        
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+                        ArquivoFilme arqfilme = new ArquivoFilme();
+                        ArquivoSala arqsala = new ArquivoSala();
+                    
+                        Filme filme = arqfilme.buscar(Integer.parseInt(split[1]));
+                        Sala sala = arqsala.buscar(Integer.parseInt(split[2]));
+                        
+                        int[] poltronas = new int[50];
+                        for(int i = 0; i < 50; i++){
+                            poltronas[i] = Integer.parseInt(split[i+4]);
+                        }
+                        
+                        sessao = new Sessao(Integer.parseInt(split[0]), filme, sala, split[3], poltronas);
+
+                        if(sessao.getSala().getNumSala() == numSala)                        
+                            sessoes.add(sessao);
+                        
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+            }         
+        }
+        
+        return sessoes;
+    }
+    
+    /**
+     * Este método é responsável por buscar todas as sessões que estão exibindo um
+     * determinado filme.
+     * @param codFilme
+     * @return sessoes
+     */
+    public List<Sessao> getAllByFilme(int codFilme){
+        List<Sessao> sessoes = new ArrayList<>();
+        Sessao sessao = null;
+        FileReader file;
+        
+        if(Files.exists(arquivoPath)){
+            try {
+                file = new FileReader(arquivo);
+                BufferedReader reader = new BufferedReader(file);
+
+                try {
+                    reader.readLine();
+                    String rset = reader.readLine();
+
+                    while(rset != null){
+                        String[] split = rset.split(";");
+                        ArquivoFilme arqfilme = new ArquivoFilme();
+                        ArquivoSala arqsala = new ArquivoSala();
+                    
+                        Filme filme = arqfilme.buscar(Integer.parseInt(split[1]));
+                        Sala sala = arqsala.buscar(Integer.parseInt(split[2]));
+                        
+                        int[] poltronas = new int[50];
+                        for(int i = 0; i < 50; i++){
+                            poltronas[i] = Integer.parseInt(split[i+4]);
+                        }
+                        
+                        sessao = new Sessao(Integer.parseInt(split[0]), filme, sala, split[3], poltronas);
+
+                        if(filme.getCodFilme() == codFilme)
+                            sessoes.add(sessao);
+                        
+                        rset = reader.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArquivoSessao.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        
+        return sessoes;
+    }
+    
+    /**
      * Este método é responsável por alterar o registro de uma sessão.
      * @param sessao 
      */
@@ -318,6 +420,4 @@ public class ArquivoSessao extends Arquivo {
         }
     }
     
-}
-
-       
+}       

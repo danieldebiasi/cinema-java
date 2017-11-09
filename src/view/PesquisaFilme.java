@@ -29,6 +29,8 @@ public class PesquisaFilme extends javax.swing.JDialog {
         
         this.rp = rp;
         
+        jTableFilmes.getColumnModel().getColumn(0).setMaxWidth(70);
+        
         jTableFilmes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
@@ -92,8 +94,8 @@ public class PesquisaFilme extends javax.swing.JDialog {
         jLabelVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelVoltar.setToolTipText("Voltar");
         jLabelVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelVoltarMouseReleased(evt);
             }
         });
 
@@ -159,9 +161,9 @@ public class PesquisaFilme extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jLabelVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseClicked
+    private void jLabelVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseReleased
         this.dispose();
-    }//GEN-LAST:event_jLabelVoltarMouseClicked
+    }//GEN-LAST:event_jLabelVoltarMouseReleased
 
     /**
      * @param args the command line arguments

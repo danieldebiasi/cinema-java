@@ -179,8 +179,8 @@ public class Poltronas extends javax.swing.JDialog {
         jLabelGVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelGVoltar.setToolTipText("Voltar");
         jLabelGVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelGVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelGVoltarMouseReleased(evt);
             }
         });
 
@@ -664,7 +664,7 @@ public class Poltronas extends javax.swing.JDialog {
                                 .addComponent(jButtonPoltrona25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButtonPoltrona35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButtonPoltrona45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonPoltrona6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -846,10 +846,6 @@ public class Poltronas extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelGVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabelGVoltarMouseClicked
-
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -875,6 +871,10 @@ public class Poltronas extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_jButtonPoltronaActionPerformed
+
+    private void jLabelGVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelGVoltarMouseReleased
 
     /**
      * @param args the command line arguments

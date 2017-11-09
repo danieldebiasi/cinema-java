@@ -29,6 +29,11 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
         
         this.rp = rp;
         
+        jTableFuncionarios.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jTableFuncionarios.getColumnModel().getColumn(0).setMaxWidth(150);
+        jTableFuncionarios.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTableFuncionarios.getColumnModel().getColumn(2).setMaxWidth(150);
+        
         jTableFuncionarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
@@ -69,8 +74,8 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
         jLabelVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelVoltar.setToolTipText("Voltar");
         jLabelVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelVoltarMouseReleased(evt);
             }
         });
 
@@ -149,10 +154,6 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabelVoltarMouseClicked
-
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -161,6 +162,10 @@ public class PesquisaFuncionario extends javax.swing.JDialog {
         rp.setMsg(msg);
         this.dispose();
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
+
+    private void jLabelVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelVoltarMouseReleased
 
     /**
      * @param args the command line arguments

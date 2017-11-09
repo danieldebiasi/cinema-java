@@ -312,7 +312,7 @@
             <Property name="toolTipText" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelGVoltarMouseClicked"/>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelGVoltarMouseReleased"/>
           </Events>
         </Component>
       </SubComponents>

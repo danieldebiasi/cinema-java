@@ -129,8 +129,8 @@ public class ConsultaSessao extends javax.swing.JDialog {
         jLabelVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelVoltar.setToolTipText("Voltar");
         jLabelVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelVoltarMouseReleased(evt);
             }
         });
 
@@ -391,10 +391,6 @@ public class ConsultaSessao extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
-    private void jLabelVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabelVoltarMouseClicked
-
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         jTableFilmes.setEnabled(true);
         jListSala.setEnabled(true);
@@ -421,6 +417,10 @@ public class ConsultaSessao extends javax.swing.JDialog {
             this.dispose();
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jLabelVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelVoltarMouseReleased
 
     /**
      * @param args the command line arguments

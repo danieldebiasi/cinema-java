@@ -7,6 +7,7 @@
 package view;
 
 import control.ControleSala;
+import control.ControleSessao;
 import control.Resposta;
 import javax.swing.JOptionPane;
 
@@ -85,8 +86,8 @@ public class ConsultaSala extends javax.swing.JDialog {
         jLabelVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         jLabelVoltar.setToolTipText("Voltar");
         jLabelVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelVoltarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelVoltarMouseReleased(evt);
             }
         });
 
@@ -197,16 +198,18 @@ public class ConsultaSala extends javax.swing.JDialog {
         }        
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
-    private void jLabelVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabelVoltarMouseClicked
-
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        String msg = ControleSala.alterar(jSpinnerNumSala.getValue().toString(), jComboBoxStatus.getSelectedItem());
-
+        String msg = "";
+        
+        if(!ControleSessao.isSalaOcupada(Integer.parseInt(jSpinnerNumSala.getValue().toString()))){
+            msg = ControleSala.alterar(jSpinnerNumSala.getValue().toString(), jComboBoxStatus.getSelectedItem());
+        }else {
+            msg = "Erro: Sala em uso por uma ou mais sessões!\nAltere as sessões para alterar a sala.";
+        }
+        
         JOptionPane.showMessageDialog(null, msg);
 
-        if(msg.equals("Sala alterada com sucesso!")){
+        if(!msg.equals("Erro: Complete todas as informações!")){
             this.dispose();
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
@@ -217,13 +220,22 @@ public class ConsultaSala extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Confirmar exclusão da sala?") == JOptionPane.YES_OPTION){
-            String msg = ControleSala.excluirSala(jSpinnerNumSala.getValue().toString(), jComboBoxStatus.getSelectedItem());
-            
-            JOptionPane.showMessageDialog(null, msg);
-            this.dispose();
+        String msg = "";
+        
+        if(!ControleSessao.isSalaOcupada(Integer.parseInt(jSpinnerNumSala.getValue().toString()))){
+            if(JOptionPane.showConfirmDialog(null, "Confirmar exclusão da sala?") == JOptionPane.YES_OPTION)
+                msg = ControleSala.excluirSala(jSpinnerNumSala.getValue().toString(), jComboBoxStatus.getSelectedItem());
+        }else {
+            msg = "Erro: Sala em uso por uma ou mais sessões!\nAltere as sessões para excluir a sala.";    
         }
+        
+        JOptionPane.showMessageDialog(null, msg);
+        this.dispose();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jLabelVoltarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVoltarMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabelVoltarMouseReleased
 
     /**
      * @param args the command line arguments
