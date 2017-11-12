@@ -7,6 +7,7 @@
         <Menu class="javax.swing.JMenu" name="jMenuCadastros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastros"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadFilmes">
@@ -48,6 +49,7 @@
         <Menu class="javax.swing.JMenu" name="jMenuConsultas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConFilmes">
@@ -89,6 +91,7 @@
         <Menu class="javax.swing.JMenu" name="jMenuVendas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vendas"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNovaVenda">

@@ -7,7 +7,11 @@
 package view;
 
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * Esta classe é responsável pela interface da tela principal.
@@ -19,6 +23,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         setIcon();
     }
@@ -158,6 +167,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         jMenuCadastros.setText("Cadastros");
+        jMenuCadastros.setFocusable(false);
 
         jMenuItemCadFilmes.setText("Filmes");
         jMenuItemCadFilmes.addActionListener(new java.awt.event.ActionListener() {
@@ -195,6 +205,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuCadastros);
 
         jMenuConsultas.setText("Consultas");
+        jMenuConsultas.setFocusable(false);
 
         jMenuItemConFilmes.setText("Filmes");
         jMenuItemConFilmes.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +243,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuConsultas);
 
         jMenuVendas.setText("Vendas");
+        jMenuVendas.setFocusable(false);
 
         jMenuItemNovaVenda.setText("Nova Venda");
         jMenuItemNovaVenda.addActionListener(new java.awt.event.ActionListener() {
