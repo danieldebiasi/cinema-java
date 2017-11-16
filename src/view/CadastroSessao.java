@@ -168,7 +168,11 @@ public class CadastroSessao extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel10.setText("Horário (HH:mm):");
 
-        jFormattedTextFieldHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        try {
+            jFormattedTextFieldHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFormattedTextFieldHora.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jComboBoxClasIndicativa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N

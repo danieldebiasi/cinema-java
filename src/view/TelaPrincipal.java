@@ -406,6 +406,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/cinema.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagens/cinema.png")));
     }
 }

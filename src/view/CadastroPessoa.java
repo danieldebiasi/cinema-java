@@ -120,6 +120,12 @@ public class CadastroPessoa extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel6.setText("Data de Nascimento:");
 
+        try {
+            jFormattedTextFieldFDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         jTextFieldFEndereco.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jTextFieldFTelefone.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -132,7 +138,11 @@ public class CadastroPessoa extends javax.swing.JDialog {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel17.setText("Entrada:");
 
-        jFormattedTextFieldSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        try {
+            jFormattedTextFieldSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFormattedTextFieldSaida.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -312,6 +322,12 @@ public class CadastroPessoa extends javax.swing.JDialog {
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel15.setText("Data de Nascimento:");
+
+        try {
+            jFormattedTextFieldGDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel16.setText("Salário:");
