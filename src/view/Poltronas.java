@@ -193,6 +193,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona1.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona1.setText("1");
+        jButtonPoltrona1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona1.setContentAreaFilled(false);
+        jButtonPoltrona1.setFocusable(false);
+        jButtonPoltrona1.setOpaque(true);
         jButtonPoltrona1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -201,6 +205,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona11.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona11.setText("11");
+        jButtonPoltrona11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona11.setContentAreaFilled(false);
+        jButtonPoltrona11.setFocusable(false);
+        jButtonPoltrona11.setOpaque(true);
         jButtonPoltrona11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -209,6 +217,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona21.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona21.setText("21");
+        jButtonPoltrona21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona21.setContentAreaFilled(false);
+        jButtonPoltrona21.setFocusable(false);
+        jButtonPoltrona21.setOpaque(true);
         jButtonPoltrona21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -217,6 +229,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona31.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona31.setText("31");
+        jButtonPoltrona31.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona31.setContentAreaFilled(false);
+        jButtonPoltrona31.setFocusable(false);
+        jButtonPoltrona31.setOpaque(true);
         jButtonPoltrona31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -225,6 +241,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona41.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona41.setText("41");
+        jButtonPoltrona41.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona41.setContentAreaFilled(false);
+        jButtonPoltrona41.setFocusable(false);
+        jButtonPoltrona41.setOpaque(true);
         jButtonPoltrona41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -250,6 +270,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona2.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona2.setText("2");
+        jButtonPoltrona2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona2.setContentAreaFilled(false);
+        jButtonPoltrona2.setFocusable(false);
+        jButtonPoltrona2.setOpaque(true);
         jButtonPoltrona2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -258,6 +282,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona3.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona3.setText("3");
+        jButtonPoltrona3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona3.setContentAreaFilled(false);
+        jButtonPoltrona3.setFocusable(false);
+        jButtonPoltrona3.setOpaque(true);
         jButtonPoltrona3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -266,6 +294,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona4.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona4.setText("4");
+        jButtonPoltrona4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona4.setContentAreaFilled(false);
+        jButtonPoltrona4.setFocusable(false);
+        jButtonPoltrona4.setOpaque(true);
         jButtonPoltrona4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -274,6 +306,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona5.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona5.setText("5");
+        jButtonPoltrona5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona5.setContentAreaFilled(false);
+        jButtonPoltrona5.setFocusable(false);
+        jButtonPoltrona5.setOpaque(true);
         jButtonPoltrona5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -282,6 +318,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona6.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona6.setText("6");
+        jButtonPoltrona6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona6.setContentAreaFilled(false);
+        jButtonPoltrona6.setFocusable(false);
+        jButtonPoltrona6.setOpaque(true);
         jButtonPoltrona6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -290,6 +330,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona7.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona7.setText("7");
+        jButtonPoltrona7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona7.setContentAreaFilled(false);
+        jButtonPoltrona7.setFocusable(false);
+        jButtonPoltrona7.setOpaque(true);
         jButtonPoltrona7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -298,6 +342,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona8.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona8.setText("8");
+        jButtonPoltrona8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona8.setContentAreaFilled(false);
+        jButtonPoltrona8.setFocusable(false);
+        jButtonPoltrona8.setOpaque(true);
         jButtonPoltrona8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -306,6 +354,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona9.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona9.setText("9");
+        jButtonPoltrona9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona9.setContentAreaFilled(false);
+        jButtonPoltrona9.setFocusable(false);
+        jButtonPoltrona9.setOpaque(true);
         jButtonPoltrona9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -314,6 +366,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona10.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona10.setText("10");
+        jButtonPoltrona10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona10.setContentAreaFilled(false);
+        jButtonPoltrona10.setFocusable(false);
+        jButtonPoltrona10.setOpaque(true);
         jButtonPoltrona10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -322,6 +378,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona12.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona12.setText("12");
+        jButtonPoltrona12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona12.setContentAreaFilled(false);
+        jButtonPoltrona12.setFocusable(false);
+        jButtonPoltrona12.setOpaque(true);
         jButtonPoltrona12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -330,6 +390,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona13.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona13.setText("13");
+        jButtonPoltrona13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona13.setContentAreaFilled(false);
+        jButtonPoltrona13.setFocusable(false);
+        jButtonPoltrona13.setOpaque(true);
         jButtonPoltrona13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -338,6 +402,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona14.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona14.setText("14");
+        jButtonPoltrona14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona14.setContentAreaFilled(false);
+        jButtonPoltrona14.setFocusable(false);
+        jButtonPoltrona14.setOpaque(true);
         jButtonPoltrona14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -346,6 +414,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona15.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona15.setText("15");
+        jButtonPoltrona15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona15.setContentAreaFilled(false);
+        jButtonPoltrona15.setFocusable(false);
+        jButtonPoltrona15.setOpaque(true);
         jButtonPoltrona15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -354,6 +426,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona16.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona16.setText("16");
+        jButtonPoltrona16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona16.setContentAreaFilled(false);
+        jButtonPoltrona16.setFocusable(false);
+        jButtonPoltrona16.setOpaque(true);
         jButtonPoltrona16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -362,6 +438,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona17.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona17.setText("17");
+        jButtonPoltrona17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona17.setContentAreaFilled(false);
+        jButtonPoltrona17.setFocusable(false);
+        jButtonPoltrona17.setOpaque(true);
         jButtonPoltrona17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -370,6 +450,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona18.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona18.setText("18");
+        jButtonPoltrona18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona18.setContentAreaFilled(false);
+        jButtonPoltrona18.setFocusable(false);
+        jButtonPoltrona18.setOpaque(true);
         jButtonPoltrona18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -378,6 +462,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona19.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona19.setText("19");
+        jButtonPoltrona19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona19.setContentAreaFilled(false);
+        jButtonPoltrona19.setFocusable(false);
+        jButtonPoltrona19.setOpaque(true);
         jButtonPoltrona19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -386,6 +474,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona20.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona20.setText("20");
+        jButtonPoltrona20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona20.setContentAreaFilled(false);
+        jButtonPoltrona20.setFocusable(false);
+        jButtonPoltrona20.setOpaque(true);
         jButtonPoltrona20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -394,6 +486,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona30.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona30.setText("30");
+        jButtonPoltrona30.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona30.setContentAreaFilled(false);
+        jButtonPoltrona30.setFocusable(false);
+        jButtonPoltrona30.setOpaque(true);
         jButtonPoltrona30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -402,6 +498,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona29.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona29.setText("29");
+        jButtonPoltrona29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona29.setContentAreaFilled(false);
+        jButtonPoltrona29.setFocusable(false);
+        jButtonPoltrona29.setOpaque(true);
         jButtonPoltrona29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -410,6 +510,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona25.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona25.setText("25");
+        jButtonPoltrona25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona25.setContentAreaFilled(false);
+        jButtonPoltrona25.setFocusable(false);
+        jButtonPoltrona25.setOpaque(true);
         jButtonPoltrona25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -418,6 +522,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona22.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona22.setText("22");
+        jButtonPoltrona22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona22.setContentAreaFilled(false);
+        jButtonPoltrona22.setFocusable(false);
+        jButtonPoltrona22.setOpaque(true);
         jButtonPoltrona22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -426,6 +534,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona26.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona26.setText("26");
+        jButtonPoltrona26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona26.setContentAreaFilled(false);
+        jButtonPoltrona26.setFocusable(false);
+        jButtonPoltrona26.setOpaque(true);
         jButtonPoltrona26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -434,6 +546,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona23.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona23.setText("23");
+        jButtonPoltrona23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona23.setContentAreaFilled(false);
+        jButtonPoltrona23.setFocusable(false);
+        jButtonPoltrona23.setOpaque(true);
         jButtonPoltrona23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -442,6 +558,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona27.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona27.setText("27");
+        jButtonPoltrona27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona27.setContentAreaFilled(false);
+        jButtonPoltrona27.setFocusable(false);
+        jButtonPoltrona27.setOpaque(true);
         jButtonPoltrona27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -450,6 +570,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona28.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona28.setText("28");
+        jButtonPoltrona28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona28.setContentAreaFilled(false);
+        jButtonPoltrona28.setFocusable(false);
+        jButtonPoltrona28.setOpaque(true);
         jButtonPoltrona28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -458,6 +582,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona24.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona24.setText("24");
+        jButtonPoltrona24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona24.setContentAreaFilled(false);
+        jButtonPoltrona24.setFocusable(false);
+        jButtonPoltrona24.setOpaque(true);
         jButtonPoltrona24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -466,6 +594,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona35.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona35.setText("35");
+        jButtonPoltrona35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona35.setContentAreaFilled(false);
+        jButtonPoltrona35.setFocusable(false);
+        jButtonPoltrona35.setOpaque(true);
         jButtonPoltrona35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -474,6 +606,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona33.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona33.setText("33");
+        jButtonPoltrona33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona33.setContentAreaFilled(false);
+        jButtonPoltrona33.setFocusable(false);
+        jButtonPoltrona33.setOpaque(true);
         jButtonPoltrona33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -482,6 +618,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona37.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona37.setText("37");
+        jButtonPoltrona37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona37.setContentAreaFilled(false);
+        jButtonPoltrona37.setFocusable(false);
+        jButtonPoltrona37.setOpaque(true);
         jButtonPoltrona37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -490,6 +630,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona40.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona40.setText("40");
+        jButtonPoltrona40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona40.setContentAreaFilled(false);
+        jButtonPoltrona40.setFocusable(false);
+        jButtonPoltrona40.setOpaque(true);
         jButtonPoltrona40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -498,6 +642,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona32.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona32.setText("32");
+        jButtonPoltrona32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona32.setContentAreaFilled(false);
+        jButtonPoltrona32.setFocusable(false);
+        jButtonPoltrona32.setOpaque(true);
         jButtonPoltrona32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -506,6 +654,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona36.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona36.setText("36");
+        jButtonPoltrona36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona36.setContentAreaFilled(false);
+        jButtonPoltrona36.setFocusable(false);
+        jButtonPoltrona36.setOpaque(true);
         jButtonPoltrona36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -514,6 +666,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona38.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona38.setText("38");
+        jButtonPoltrona38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona38.setContentAreaFilled(false);
+        jButtonPoltrona38.setFocusable(false);
+        jButtonPoltrona38.setOpaque(true);
         jButtonPoltrona38.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -522,6 +678,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona34.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona34.setText("34");
+        jButtonPoltrona34.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona34.setContentAreaFilled(false);
+        jButtonPoltrona34.setFocusable(false);
+        jButtonPoltrona34.setOpaque(true);
         jButtonPoltrona34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -530,6 +690,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona39.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona39.setText("39");
+        jButtonPoltrona39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona39.setContentAreaFilled(false);
+        jButtonPoltrona39.setFocusable(false);
+        jButtonPoltrona39.setOpaque(true);
         jButtonPoltrona39.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -538,6 +702,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona43.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona43.setText("43");
+        jButtonPoltrona43.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona43.setContentAreaFilled(false);
+        jButtonPoltrona43.setFocusable(false);
+        jButtonPoltrona43.setOpaque(true);
         jButtonPoltrona43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -546,6 +714,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona47.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona47.setText("47");
+        jButtonPoltrona47.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona47.setContentAreaFilled(false);
+        jButtonPoltrona47.setFocusable(false);
+        jButtonPoltrona47.setOpaque(true);
         jButtonPoltrona47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -554,6 +726,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona50.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona50.setText("50");
+        jButtonPoltrona50.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona50.setContentAreaFilled(false);
+        jButtonPoltrona50.setFocusable(false);
+        jButtonPoltrona50.setOpaque(true);
         jButtonPoltrona50.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -562,6 +738,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona44.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona44.setText("44");
+        jButtonPoltrona44.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona44.setContentAreaFilled(false);
+        jButtonPoltrona44.setFocusable(false);
+        jButtonPoltrona44.setOpaque(true);
         jButtonPoltrona44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -570,6 +750,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona46.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona46.setText("46");
+        jButtonPoltrona46.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona46.setContentAreaFilled(false);
+        jButtonPoltrona46.setFocusable(false);
+        jButtonPoltrona46.setOpaque(true);
         jButtonPoltrona46.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -578,6 +762,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona48.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona48.setText("48");
+        jButtonPoltrona48.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona48.setContentAreaFilled(false);
+        jButtonPoltrona48.setFocusable(false);
+        jButtonPoltrona48.setOpaque(true);
         jButtonPoltrona48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -586,6 +774,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona49.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona49.setText("49");
+        jButtonPoltrona49.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona49.setContentAreaFilled(false);
+        jButtonPoltrona49.setFocusable(false);
+        jButtonPoltrona49.setOpaque(true);
         jButtonPoltrona49.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -594,6 +786,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona45.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona45.setText("45");
+        jButtonPoltrona45.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona45.setContentAreaFilled(false);
+        jButtonPoltrona45.setFocusable(false);
+        jButtonPoltrona45.setOpaque(true);
         jButtonPoltrona45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);
@@ -602,6 +798,10 @@ public class Poltronas extends javax.swing.JDialog {
 
         jButtonPoltrona42.setBackground(new java.awt.Color(0, 255, 0));
         jButtonPoltrona42.setText("42");
+        jButtonPoltrona42.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonPoltrona42.setContentAreaFilled(false);
+        jButtonPoltrona42.setFocusable(false);
+        jButtonPoltrona42.setOpaque(true);
         jButtonPoltrona42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPoltronaActionPerformed(evt);

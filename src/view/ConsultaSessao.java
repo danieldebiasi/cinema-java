@@ -196,7 +196,11 @@ public class ConsultaSessao extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel10.setText("Horário (HH:mm):");
 
-        jFormattedTextFieldHorario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        try {
+            jFormattedTextFieldHorario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFormattedTextFieldHorario.setEnabled(false);
         jFormattedTextFieldHorario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
